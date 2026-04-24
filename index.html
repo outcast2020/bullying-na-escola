@@ -1,23 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apresentação Interativa</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Apresentação: Bullying e Cyberbullying</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <span class="insta">@cjvidalguerrero</span>
-    </header>
+    <a href="https://instagram.com/cjvidalguerrero" target="_blank" class="instagram-handle">@cjvidalguerrero</a>
 
-    <main id="app">
-        </main>
+    <div class="presentation-container">
+        
+        <div class="slide active" id="slide-1">
+            <h2>Pesquisa Rápida 📊</h2>
+            <p>Para começarmos, responda com sinceridade:</p>
+            <h3>Você já viu, cometeu ou sofreu bullying?</h3>
+            <div class="poll-options">
+                <button class="poll-btn" onclick="registerVote('poll1', 'Sim')">Sim</button>
+                <button class="poll-btn" onclick="registerVote('poll1', 'Não')">Não</button>
+                <button class="poll-btn" onclick="registerVote('poll1', 'Não tenho certeza')">Não tenho certeza</button>
+            </div>
+            <p class="feedback-msg" id="feedback-poll1"></p>
+        </div>
 
-    <div class="navigation">
-        <button id="prevBtn" onclick="changeSlide(-1)">Voltar</button>
-        <div id="progress">1 / 6</div>
-        <button id="nextBtn" onclick="changeSlide(1)">Próximo</button>
+        <div class="slide" id="slide-2">
+            <h2>O que é Bullying?</h2>
+            <ul>
+                <li>É um comportamento agressivo e intencionalmente nocivo[cite: 1, 4].</li>
+                <li>Ocorre de forma repetitiva (perseguição)[cite: 1, 4].</li>
+                <li>Estabelece-se em uma relação assimétrica de dominação e abuso de poder[cite: 3, 5].</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide-3">
+            <h2>Formas Comuns de Bullying</h2>
+            <ul>
+                <li><strong>Físico e Verbal:</strong> Bater, chutar, colocar apelidos cruéis e ofender[cite: 8].</li>
+                <li><strong>Psicológico:</strong> Humilhar, excluir de brincadeiras, difamar e ameaçar[cite: 3, 10].</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide-4">
+            <h2>O Cenário do Bullying</h2>
+            <ul>
+                <li>No Brasil, cerca de 43% dos estudantes relatam envolvimento com bullying[cite: 30].</li>
+                <li>Em um estudo no RJ, a maioria (16,9%) se colocou como vítima, mas muitos também são autores (12,7%) ou ambos (10,9%)[cite: 31, 32].</li>
+                <li>A maior incidência ocorre entre meninos na faixa de 11 a 14 anos[cite: 36].</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide-5">
+            <h2>Pesquisa Rápida 📊</h2>
+            <p>Agora refletindo sobre o ambiente virtual:</p>
+            <h3>Você já viu, cometeu ou sofreu Cyberbullying?</h3>
+            <div class="poll-options">
+                <button class="poll-btn" onclick="registerVote('poll2', 'Sim')">Sim</button>
+                <button class="poll-btn" onclick="registerVote('poll2', 'Não')">Não</button>
+                <button class="poll-btn" onclick="registerVote('poll2', 'Não tenho certeza')">Não tenho certeza</button>
+            </div>
+            <p class="feedback-msg" id="feedback-poll2"></p>
+        </div>
+
+        <div class="slide" id="slide-6">
+            <h2>O que é Cyberbullying?</h2>
+            <ul>
+                <li>É a violência digital entre pares, usando tecnologia para ofender, hostilizar e ameaçar[cite: 6, 7].</li>
+                <li>Causa fortes impactos à saúde psíquica[cite: 7].</li>
+                <li>Tem maior incidência entre adolescentes mais velhos, dos 15 aos 18 anos[cite: 37].</li>
+            </ul>
+        </div>
+
+        <div class="slide" id="slide-7">
+            <h2>Formas de Cyberbullying</h2>
+            <ul>
+                <li><strong>Assédio e Exposição:</strong> Mensagens ofensivas, postagem de imagens íntimas sem consentimento (sexting) e ameaças[cite: 14, 15, 19].</li>
+                <li><strong>Falsidade e Enganação:</strong> Criar perfis falsos para magoar ou se passar por outra pessoa (catfishing)[cite: 26, 27].</li>
+                <li><strong>Exclusão Digital:</strong> Bloquear intencionalmente pessoas de grupos, propagar rumores e roubar contas de jogos[cite: 17, 20, 21, 28].</li>
+            </ul>
+        </div>
+
+        <div class="navigation">
+            <button id="prevBtn" onclick="changeSlide(-1)">Anterior</button>
+            <span id="slide-counter">1 / 7</span>
+            <button id="nextBtn" onclick="changeSlide(1)">Próximo</button>
+        </div>
     </div>
 
     <script src="app.js"></script>
