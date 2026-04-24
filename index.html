@@ -6,13 +6,10 @@
     <title>Apresentação: Bullying e Cyberbullying</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -21,192 +18,57 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px 0; /* Ajuda caso a tela seja pequena na vertical */
+            padding: 20px 0;
         }
-
         .instagram-handle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #64748b;
-            text-decoration: none;
-            z-index: 1000;
-            background: white;
-            padding: 8px 15px;
-            border-radius: 50px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            position: fixed; top: 20px; right: 20px;
+            font-size: 0.9rem; font-weight: 700; color: #64748b;
+            text-decoration: none; z-index: 1000; background: white;
+            padding: 8px 15px; border-radius: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;
         }
-
-        .instagram-handle:hover {
-            color: #3b82f6;
-            transform: translateY(-2px);
-        }
-
+        .instagram-handle:hover { color: #3b82f6; transform: translateY(-2px); }
         .presentation-container {
-            background: #ffffff;
-            width: 95%;
-            max-width: 800px; /* Limita a largura no PC para ficar bonito */
-            min-height: 550px;
-            border-radius: 24px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin: 20px;
+            background: #ffffff; width: 95%; max-width: 800px; min-height: 550px;
+            border-radius: 24px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            padding: 40px; display: flex; flex-direction: column;
+            justify-content: space-between; margin: 20px;
         }
-
-        .slide {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .slide.active {
-            display: block;
-        }
-
-        h2 {
-            color: #1e293b;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            border-left: 5px solid #3b82f6;
-            padding-left: 15px;
-        }
-
-        h3 {
-            text-align: center;
-            margin: 20px 0;
-            font-weight: 600;
-            color: #475569;
-        }
-
-        p {
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-
-        .highlight-box {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-
-        ul {
-            margin-top: 10px;
-            list-style-position: inside;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        /* Grid para as listas funcionarem bem no PC e no Celular */
-        .grid-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 10px;
-        }
-
-        /* Grid para estatísticas */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .stat-card {
-            background: #eff6ff;
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #dbeafe;
-            font-size: 0.95rem;
-        }
-
-        /* Estilos da Pesquisa */
-        .poll-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .poll-btn {
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 1rem;
-            color: #334155;
-        }
-
+        .slide { display: none; animation: fadeIn 0.5s ease; }
+        .slide.active { display: block; }
+        h2 { color: #1e293b; font-size: 1.8rem; margin-bottom: 20px; border-left: 5px solid #3b82f6; padding-left: 15px; }
+        h3 { text-align: center; margin: 20px 0; font-weight: 600; color: #475569; }
+        p { line-height: 1.7; margin-bottom: 20px; font-size: 1.05rem; }
+        .highlight-box { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; }
+        ul { margin-top: 10px; list-style-position: inside; }
+        li { margin-bottom: 8px; }
+        .grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin: 20px 0; }
+        .stat-card { background: #eff6ff; padding: 15px; border-radius: 12px; text-align: center; border: 1px solid #dbeafe; font-size: 0.95rem; }
+        .poll-options { display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto; }
+        .poll-btn { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 15px; border-radius: 12px; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.2s; font-size: 1rem; color: #334155; }
         .poll-btn:hover { background: #e2e8f0; }
         .poll-btn.selected { background: #3b82f6; color: white; border-color: #2563eb; }
-
-        .feedback-msg {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #10b981;
-            font-weight: 600;
-            min-height: 20px;
-        }
-
-        /* Navegação Inferior */
-        .navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 30px;
-            border-top: 1px solid #f1f5f9;
-            margin-top: 20px;
-        }
-
-        button#prevBtn, button#nextBtn {
-            background: #3b82f6;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-family: inherit;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        button#prevBtn:hover, button#nextBtn:hover {
-            background: #2563eb;
-        }
-
-        button:disabled { 
-            background: #cbd5e1 !important; 
-            cursor: not-allowed; 
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Ajustes para telas menores (Celulares) */
+        .feedback-msg { text-align: center; margin-top: 15px; font-size: 0.9rem; color: #10b981; font-weight: 600; min-height: 20px; }
+        .navigation { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid #f1f5f9; margin-top: 20px; }
+        button#prevBtn, button#nextBtn, .update-btn { background: #3b82f6; color: white; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 600; font-family: inherit; cursor: pointer; transition: background 0.2s; }
+        button#prevBtn:hover, button#nextBtn:hover, .update-btn:hover { background: #2563eb; }
+        button:disabled { background: #cbd5e1 !important; cursor: not-allowed; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 600px) {
             .grid-list { grid-template-columns: 1fr; }
             .presentation-container { padding: 25px; margin: 10px; }
             h2 { font-size: 1.5rem; }
             .instagram-handle { top: 10px; right: 10px; font-size: 0.8rem; }
+            .charts-wrapper { flex-direction: column; }
+            .chart-container { width: 100% !important; margin-bottom: 20px; }
         }
+        
+        /* Estilos dos gráficos */
+        .charts-wrapper { display: flex; justify-content: space-around; width: 100%; margin-top: 20px; align-items: center; }
+        .chart-container { width: 45%; text-align: center; }
+        .update-btn { width: 100%; margin-top: 20px; background: #10b981; }
+        .update-btn:hover { background: #059669; }
     </style>
 </head>
 <body>
@@ -320,38 +182,65 @@
                         <li><strong>Trollagem:</strong> Comentários provocativos.</li>
                         <li><strong>Memes:</strong> Criados para ridicularizar ou expor.</li>
                         <li><strong>Exclusão:</strong> Bloqueio intencional de grupos.</li>
-                        <li><strong>Roubo:</strong> Invasão de contas e jogos (MMOG).</li>
+                        <li><strong>Roubo:</strong> Invasão de contas e jogos.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <div class="slide">
+            <div class="content">
+                <h2>Resultados das Pesquisas 📈</h2>
+                <p style="text-align: center;">Comparativo entre as experiências do nosso público.</p>
+                
+                <div class="charts-wrapper">
+                    <div class="chart-container">
+                        <h3 style="font-size: 1.1rem; color: #1e293b;">Bullying</h3>
+                        <canvas id="chartBullying"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3 style="font-size: 1.1rem; color: #1e293b;">Cyberbullying</h3>
+                        <canvas id="chartCyberbullying"></canvas>
+                    </div>
+                </div>
+
+                <button class="update-btn" onclick="loadCharts()">🔄 Atualizar Gráficos em Tempo Real</button>
+            </div>
+        </div>
+
         <div class="navigation">
             <button id="prevBtn" onclick="changeSlide(-1)">Anterior</button>
-            <span id="slide-counter">1 / 7</span>
+            <span id="slide-counter">1 / 8</span>
             <button id="nextBtn" onclick="changeSlide(1)">Próximo</button>
         </div>
     </div>
 
     <script>
+        // ⚠️ INSIRA AQUI A URL GERADA NO PASSO 1 DO APPS SCRIPT
+        const WEB_APP_URL = "COLE_AQUI_A_SUA_URL_DO_APPS_SCRIPT"; 
+
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.slide');
         const counter = document.getElementById('slide-counter');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+        
+        // Variáveis para armazenar as instâncias dos gráficos
+        let chartInstance1 = null;
+        let chartInstance2 = null;
 
         function showSlide(index) {
-            // Esconde todos
             slides.forEach(slide => slide.classList.remove('active'));
-            // Mostra o atual
             slides[index].classList.add('active');
 
-            // Atualiza botões
             prevBtn.disabled = index === 0;
             nextBtn.disabled = index === slides.length - 1;
-            
-            // Atualiza texto do contador
             counter.innerText = `${index + 1} / ${slides.length}`;
+
+            // Se for o último slide, carrega os gráficos automaticamente
+            if(index === slides.length - 1) {
+                loadCharts();
+            }
         }
 
         function changeSlide(step) {
@@ -363,21 +252,109 @@
         }
 
         function registerVote(pollId, answer, clickedButton) {
-            // Pega o slide atual para manipular apenas os botões dele
             const currentSlide = slides[currentSlideIndex];
             const allButtons = currentSlide.querySelectorAll('.poll-btn');
+            const feedbackEl = document.getElementById(`feedback-${pollId}`);
             
-            // Remove a seleção de todos os botões daquele slide
             allButtons.forEach(btn => btn.classList.remove('selected'));
-            
-            // Adiciona a classe visual ao botão clicado
             clickedButton.classList.add('selected');
 
-            // Exibe a mensagem de sucesso
-            document.getElementById(`feedback-${pollId}`).innerText = "Voto computado com sucesso! ✔️";
+            feedbackEl.innerText = "Registrando voto...";
+            feedbackEl.style.color = "#fbbf24"; // Amarelo enquanto carrega
+
+            if (WEB_APP_URL === "COLE_AQUI_A_SUA_URL_DO_APPS_SCRIPT") {
+                feedbackEl.innerText = "Simulação: Voto computado! (Backend não configurado)";
+                feedbackEl.style.color = "#10b981";
+                return;
+            }
+
+            // Envia para o Google Sheets via POST
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'pollId': pollId,
+                    'answer': answer
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                feedbackEl.innerText = "Voto computado e salvo na planilha! ✔️";
+                feedbackEl.style.color = "#10b981"; // Verde sucesso
+            })
+            .catch(error => {
+                feedbackEl.innerText = "Erro ao conectar com a planilha.";
+                feedbackEl.style.color = "#ef4444"; // Vermelho erro
+                console.error('Erro:', error);
+            });
         }
 
-        // Inicializa o primeiro slide
+        function loadCharts() {
+            if (WEB_APP_URL === "https://script.google.com/macros/s/AKfycbw9TMUwM0fVTauDixW3uEVBAck9t1eWIXAmTdpa_Wlq8YUZqfjjWcN7TLhO0vjvJf7I/exec") {
+                alert("Para ver gráficos reais, você precisa inserir a URL do Web App no código HTML!");
+                return;
+            }
+
+            const btnUpdate = document.querySelector('.update-btn');
+            btnUpdate.innerText = "⏳ Carregando...";
+
+            // Busca os dados consolidados do Google Sheets via GET
+            fetch(WEB_APP_URL)
+            .then(response => response.json())
+            .then(data => {
+                renderChart('chartBullying', data.poll1, chartInstance1, (instance) => chartInstance1 = instance);
+                renderChart('chartCyberbullying', data.poll2, chartInstance2, (instance) => chartInstance2 = instance);
+                btnUpdate.innerText = "🔄 Atualizar Gráficos em Tempo Real";
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados:', error);
+                btnUpdate.innerText = "Erro ao carregar dados";
+            });
+        }
+
+        function renderChart(canvasId, pollData, chartInstance, setChartInstance) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            const labels = ['Sim', 'Não', 'Não tenho certeza'];
+            
+            // Se o pollData existir, pega os valores, senão, coloca zero.
+            const values = pollData ? [pollData['Sim'] || 0, pollData['Não'] || 0, pollData['Não tenho certeza'] || 0] :;
+            
+            // Cores: Sim (Vermelho), Não (Verde), Incerteza (Amarelo)
+            const bgColors = ['#ef4444', '#10b981', '#f59e0b'];
+
+            if (chartInstance) {
+                // Atualiza o gráfico existente
+                chartInstance.data.datasets.data = values;
+                chartInstance.update();
+            } else {
+                // Cria um novo gráfico
+                const newChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: values,
+                            backgroundColor: bgColors,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: { font: { family: 'Inter', size: 12 } }
+                            }
+                        }
+                    }
+                });
+                setChartInstance(newChart);
+            }
+        }
+
+        // Inicia
         showSlide(currentSlideIndex);
     </script>
 </body>
