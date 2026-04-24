@@ -405,7 +405,7 @@
             <button id="nextBtn">Próximo</button>
         </div>
     </div>
-
+    
     <script>
         // ==================== CONFIGURAÇÕES ====================
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwxXkrlPTJUDP6GjLsPD-2D2w4Sf3qH_lgtHZJ7zCqYyMx_d0dsXUFUSOmaBFm8czM/exec";
@@ -608,5 +608,135 @@
         setupPollListeners();
         showSlide(0);
     </script>
+
+     <!-- SLIDE 10 - JOGO DE CARTAS (NOVO) -->
+        <div class="slide">
+            <div class="content">
+                <h2>🎮 Jogo de Cartas: Bullying & Cyberbullying</h2>
+                <p>Selecione a série e clique nas cartas para discutir as perguntas com a turma. Cada pergunta traz uma imagem simbólica e uma proposta de prevenção.</p>
+                
+                <div class="grade-series" id="series-buttons"></div>
+                <div id="cards-container" class="cards-container"></div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button id="prevBtn">Anterior</button>
+            <span id="slide-counter">1 / 11</span>
+            <button id="nextBtn">Próximo</button>
+        </div>
+    </div>
+
+    <script>
+        // ==================== DADOS DO JOGO DE CARTAS ====================
+        const gameData = {
+            "1º Ano": [
+                { pergunta: "O que é tratar alguém com respeito?", imagem: "🤝", prevencao: "💡 Prevenção: Elogie atitudes respeitosas na sala. Combine com a turma palavras mágicas (obrigado, com licença, desculpa)." },
+                { pergunta: "O que podemos fazer quando vemos um colega ser maltratado?", imagem: "🛡️", prevencao: "💡 Prevenção: Ensine a 'regra do dedo' – se alguém está triste, chame um adulto. Crie o 'círculo da ajuda'." }
+            ],
+            "2º Ano": [
+                { pergunta: "Brincadeira tem limite? Como saber quando deixa de ser brincadeira?", imagem: "😊➡️😢", prevencao: "💡 Prevenção: Trabalhe com cartões de emoções. Se alguém pede para parar, pare imediatamente." },
+                { pergunta: "Como podemos ajudar um amigo que está triste por causa do bullying?", imagem: "❤️", prevencao: "💡 Prevenção: Incentive a escuta ativa e o apoio coletivo. Crie duplas de 'amigos protetores'." },
+                { pergunta: "O que fazer se alguém te ofende em um jogo ou rede social?", imagem: "🎮⚠️", prevencao: "💡 Prevenção: Não responda, tire print, bloqueie e conte a um adulto. Use o botão de denúncia." }
+            ],
+            "3º Ano": [
+                { pergunta: "É certo compartilhar fotos ou mensagens de alguém sem permissão?", imagem: "📷🚫", prevencao: "💡 Prevenção: Ensine que a imagem é propriedade da pessoa. Peça autorização sempre." },
+                { pergunta: "O que fazer se alguém te mandar mensagens ofensivas?", imagem: "📱💢", prevencao: "💡 Prevenção: Não guarde para si. Mostre a um adulto de confiança e bloqueie o remetente." },
+                { pergunta: "Bloquear ou denunciar alguém pode ajudar? Como?", imagem: "🚫🔒", prevencao: "💡 Prevenção: Bloquear corta contato; denunciar alerta a plataforma. Ambas são ferramentas de proteção." }
+            ],
+            "4º Ano": [
+                { pergunta: "Quem pode ajudar quando algo ruim acontece na internet?", imagem: "👨‍🏫👩‍👧", prevencao: "💡 Prevenção: Elabore uma lista com alunos: pais, professores, conselheiros, disque 100. Colete números de emergência." },
+                { pergunta: "Como uma pessoa se sente quando sofre bullying?", imagem: "😞💔", prevencao: "💡 Prevenção: Roda de conversa sobre empatia. Peça que descrevam sentimentos e como oferecer acolhimento." }
+            ],
+            "5º Ano": [
+                { pergunta: "O que acontece quando alguém pratica bullying?", imagem: "⚖️", prevencao: "💡 Prevenção: Discuta consequências reais (medidas disciplinares, dano moral). Mostre que agressor também precisa de ajuda." },
+                { pergunta: "O que é cyberbullying?", imagem: "🌐👾", prevencao: "💡 Prevenção: Diferencie brincadeira de cyberbullying: repetição, intenção de machucar, desequilíbrio de poder." },
+                { pergunta: "Por que não é certo compartilhar fotos, vídeos ou mensagens sem autorização?", imagem: "📸🚫", prevencao: "💡 Prevenção: Use o 'jogo da cadeira' da privacidade: cada um decide o que quer compartilhar. Respeite limites." }
+            ],
+            "6º Ano": [
+                { pergunta: "O que uma pessoa deve fazer ao sofrer bullying?", imagem: "📢", prevencao: "💡 Prevenção: Não se isole. Conte para um adulto, guarde provas, procure apoio de amigos." },
+                { pergunta: "O que define uma situação como cyberbullying?", imagem: "💻🔍", prevencao: "💡 Prevenção: Analisar se há intencionalidade, repetição e dano psicológico. Use casos reais para debate." }
+            ],
+            "7º Ano": [
+                { pergunta: "Quais são as principais consequências do bullying para a saúde emocional das vítimas?", imagem: "🧠💔", prevencao: "💡 Prevenção: Informe sobre ansiedade, depressão, baixa autoestima. Ofereça acolhimento psicológico." },
+                { pergunta: "De que forma o anonimato na internet contribui para a prática do cyberbullying?", imagem: "👤❓", prevencao: "💡 Prevenção: Discuta a falsa sensação de impunidade. Mostre que rastros digitais existem e há responsabilização." }
+            ],
+            "8º Ano": [
+                { pergunta: "As redes sociais são ótimas brechas para o bullying, ou seja, cyberbullying. Isso pode causar isolamento social?", imagem: "📱🚷", prevencao: "💡 Prevenção: Promova atividades de integração presencial. Ensine a configurar privacidade e filtrar contatos." },
+                { pergunta: "Como o bullying surge principalmente entre adolescentes e o que fazer para acabar com isso?", imagem: "👥⚡", prevencao: "💡 Prevenção: Crie comitês de mediação entre pares. Incentive a cultura de paz com projetos de liderança positiva." }
+            ],
+            "9º Ano": [
+                { pergunta: "Como devemos lidar com o bullying em contexto escolar?", imagem: "🏫🤝", prevencao: "💡 Prevenção: Protocolo claro: ouvir, documentar, notificar família, acompanhar vítima e agressor com equipe multidisciplinar." },
+                { pergunta: "Como identificar uma vítima de cyberbullying?", imagem: "🔍😟", prevencao: "💡 Prevenção: Fique atento a mudanças de humor, isolamento, queda no desempenho, medo de usar dispositivos. Converse em particular." }
+            ]
+        };
+
+        let currentSerie = "1º Ano";
+
+        function renderSeriesButtons() {
+            const container = document.getElementById('series-buttons');
+            const series = Object.keys(gameData);
+            container.innerHTML = series.map(s => `<button class="serie-btn ${s === currentSerie ? 'active' : ''}" data-serie="${s}">${s}</button>`).join('');
+            document.querySelectorAll('.serie-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    currentSerie = btn.dataset.serie;
+                    renderSeriesButtons();
+                    renderCards();
+                });
+            });
+        }
+
+        function renderCards() {
+            const cards = gameData[currentSerie];
+            const container = document.getElementById('cards-container');
+            if (!cards) return;
+            container.innerHTML = cards.map(card => `
+                <div class="card">
+                    <div class="card-img">${card.imagem || '📌'}</div>
+                    <div class="card-content">
+                        <div class="card-question">❓ ${card.pergunta}</div>
+                        <div class="card-prevention">${card.prevencao}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Inicialização do jogo
+        renderSeriesButtons();
+        renderCards();
+
+        // ==================== LÓGICA DE APRESENTAÇÃO (SLIDES) ====================
+        // Considerando que existem 11 slides no total (0 a 10). Ajuste o contador.
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const counter = document.getElementById('slide-counter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            prevBtn.disabled = (index === 0);
+            nextBtn.disabled = (index === slides.length - 1);
+            counter.innerText = `${index + 1} / ${slides.length}`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function changeSlide(step) {
+            const newIndex = currentSlideIndex + step;
+            if (newIndex >= 0 && newIndex < slides.length) {
+                currentSlideIndex = newIndex;
+                showSlide(currentSlideIndex);
+            }
+        }
+        
+        prevBtn.addEventListener('click', () => changeSlide(-1));
+        nextBtn.addEventListener('click', () => changeSlide(1));
+        
+        // Inicia no primeiro slide (apresentação)
+        showSlide(0);
+    </script>
+</body>
+</html>
 </body>
 </html>
