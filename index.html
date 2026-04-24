@@ -40,7 +40,7 @@
         p { line-height: 1.7; margin-bottom: 20px; font-size: 1.05rem; }
         .highlight-box { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin: 15px 0; }
         .highlight-box strong { color: #1e293b; }
-        ul, .custom-list { margin-top: 10px; padding-left: 20px; }
+        ul { margin-top: 10px; padding-left: 20px; }
         li { margin-bottom: 8px; }
         .grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin: 20px 0; }
@@ -71,17 +71,30 @@
         .badge { background: #e2e8f0; border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 10px; }
 
         /* Estilos do Jogo de Cartas */
-        .grade-series { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 25px; }
-        .serie-btn { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; font-family: 'Inter', sans-serif;}
+        .grade-series { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px; }
+        .serie-btn { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; font-family: 'Inter', sans-serif;}
         .serie-btn:hover { background: #e2e8f0; }
         .serie-btn.active { background: #3b82f6; color: white; border-color: #2563eb; }
+        .cards-scroll-area { max-height: 45vh; overflow-y: auto; padding-right: 10px; } 
+        .cards-scroll-area::-webkit-scrollbar { width: 6px; }
+        .cards-scroll-area::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         .cards-container { display: flex; flex-direction: column; gap: 15px; }
-        .card { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; align-items: flex-start; gap: 20px; transition: transform 0.2s, box-shadow 0.2s; }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: #cbd5e1; }
+        .card { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; align-items: flex-start; gap: 20px; transition: all 0.3s; cursor: pointer; position: relative; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: #3b82f6; }
         .card-img { font-size: 2.5rem; background: #f8fafc; padding: 15px; border-radius: 16px; display: flex; align-items: center; justify-content: center; min-width: 80px; }
         .card-content { flex: 1; text-align: left; }
-        .card-question { font-weight: 700; color: #1e293b; margin-bottom: 10px; font-size: 1.1rem; }
-        .card-prevention { font-size: 0.95rem; color: #065f46; background: #d1fae5; padding: 10px 15px; border-radius: 10px; border-left: 4px solid #10b981; }
+        .card-question { font-weight: 700; color: #1e293b; margin-bottom: 8px; font-size: 1.1rem; }
+        
+        /* Sistema de Mostrar/Esconder a Prevenção */
+        .card-instruction { font-size: 0.85rem; color: #3b82f6; font-weight: 600; margin-bottom: 10px; transition: color 0.3s; }
+        .card.revealed .card-instruction { color: #64748b; }
+        .instruction-show { display: inline; }
+        .instruction-hide { display: none; }
+        .card.revealed .instruction-show { display: none; }
+        .card.revealed .instruction-hide { display: inline; }
+        
+        .card-prevention { display: none; margin-top: 10px; font-size: 0.95rem; color: #065f46; background: #d1fae5; padding: 12px 15px; border-radius: 10px; border-left: 4px solid #10b981; animation: fadeIn 0.4s ease; }
+        .card.revealed .card-prevention { display: block; }
 
         /* Estilos do slide de apresentação */
         .personal-card { border: 2px solid #e2e8f0; padding: 20px; border-radius: 24px; background-color: #fff; box-shadow: 0 8px 16px -6px rgba(0,0,0,0.05); }
@@ -114,7 +127,7 @@
             .school-logo { margin-bottom: 15px; }
             .school-name { font-size: 1.3rem; }
             .lecture-title { font-size: 1rem; }
-            .card { flex-direction: column; align-items: center; text-align: center; }
+            .card { flex-direction: column; align-items: center; text-align: center; padding: 15px; gap: 10px; }
             .card-content { text-align: center; }
         }
     </style>
@@ -209,7 +222,7 @@
         <div class="slide">
             <div class="content">
                 <h2>O que é Bullying?</h2>
-                <p>Conceitua-se <strong>bullying</strong> como o abuso de poder físico ou psicológico entre pares, envolvendo dominação e prepotência de um lado, e submissão, humilhação, conformismo, raiva e medo do outro. As ações incluem apelidos, humilhação, discriminação, agressões físicas, roubo, terror, exclusão e fofocas.</p>
+                <p>Conceitua-se <strong>bullying</strong> como o abuso de poder físico ou psicológico entre pares, envolvendo dominação e prepotência de um lado, e submissão, humilhação, conformismo, raiva e medo do outro.</p>
                 <div class="highlight-box">
                     <strong>📌 Três critérios fundamentais (Dan Olweus):</strong>
                     <ul>
@@ -242,21 +255,18 @@
                         <li>🔹 Exclusão social deliberada</li>
                     </ul>
                 </div>
-                <p><em>Estudo complementar na Bahia (Ristum, 2008) apontou padrões semelhantes, com destaque para apelidos ofensivos e agressão psicológica.</em></p>
             </div>
         </div>
 
         <div class="slide">
             <div class="content">
                 <h2>Estatísticas e Alcance</h2>
-                <p>Investigação da ONU com 100 mil jovens de 18 países revelou que <strong>metade</strong> já sofreu bullying por aparência, gênero, etnia ou origem.</p>
+                <p>Investigação da ONU revelou que <strong>metade</strong> de 100 mil jovens já sofreu bullying por aparência, gênero, etnia ou origem.</p>
                 <div class="stats-grid">
                     <div class="stat-card"><strong>🌎 Brasil</strong> 43%</div>
                     <div class="stat-card"><strong>🇦🇷 Argentina</strong> 47,8%</div>
-                    <div class="stat-card"><strong>🇨🇱 Chile</strong> 33,2%</div>
                     <div class="stat-card"><strong>🇩🇪 Alemanha</strong> 35,7%</div>
                     <div class="stat-card"><strong>🇳🇴 Noruega</strong> 40,4%</div>
-                    <div class="stat-card"><strong>🇪🇸 Espanha</strong> 39,8%</div>
                 </div>
                 <div class="highlight-box">
                     <strong>📊 Dados do Rio de Janeiro (Abrapia, 2000):</strong> 40,5% dos estudantes envolvidos em bullying.<br>
@@ -284,14 +294,13 @@
         <div class="slide">
             <div class="content">
                 <h2>Cyberbullying</h2>
-                <p>O termo foi criado pelo educador <strong>Bill Belsey</strong> para denominar o bullying virtual: <em>"uso repetitivo de tecnologias para ofender, hostilizar e ameaçar alguém"</em> (MELO, 2011).</p>
+                <p>O termo foi criado por <strong>Bill Belsey</strong> para denominar o bullying virtual: <em>"uso repetitivo de tecnologias para ofender, hostilizar e ameaçar alguém"</em> (MELO, 2011).</p>
                 <div class="highlight-box">
                     <ul>
                         <li>⚡ Violência digital entre pares nas redes sociais e aplicativos.</li>
                         <li>⚡ Conteúdos hostis, humilhantes e anônimos.</li>
-                        <li>⚡ Causa sérios impactos à saúde psíquica (ansiedade, depressão, isolamento).</li>
-                        <li>⚡ Maior incidência entre adolescentes de <strong>15 a 18 anos</strong> (enquanto bullying físico predomina dos 11 aos 14 anos).</li>
-                        <li>⚡ Ocorre mais frequentemente entre meninos, mas afeta todos os gêneros.</li>
+                        <li>⚡ Causa sérios impactos à saúde psíquica (ansiedade, depressão).</li>
+                        <li>⚡ Maior incidência entre adolescentes de <strong>15 a 18 anos</strong>.</li>
                     </ul>
                 </div>
             </div>
@@ -304,23 +313,17 @@
                 <div class="grid-list">
                     <ul>
                         <li><strong>📱 Harassment:</strong> Mensagens ofensivas repetitivas.</li>
-                        <li><strong>🔥 Flaming:</strong> Discussões calorosas e hostis online.</li>
+                        <li><strong>🔥 Flaming:</strong> Discussões calorosas e hostis.</li>
                         <li><strong>🎭 Catfishing:</strong> Roubo de identidade com perfil falso.</li>
-                        <li><strong>📸 Sexting não consentido:</strong> Compartilhar imagens íntimas sem autorização.</li>
-                        <li><strong>🧌 Trollagem:</strong> Comentários provocativos e fora do tópico.</li>
-                        <li><strong>😡 Namecalling:</strong> Apelidos rudes e humilhantes.</li>
-                        <li><strong>📢 Rumores e difamação:</strong> Espalhar mentiras online.</li>
-                        <li><strong>🚫 Exclusão digital:</strong> Bloquear intencionalmente de grupos e comunidades.</li>
+                        <li><strong>📸 Sexting não consentido:</strong> Compartilhar imagens íntimas.</li>
+                        <li><strong>🧌 Trollagem:</strong> Comentários provocativos.</li>
                     </ul>
                     <ul>
-                        <li><strong>🎮 Roubo em jogos:</strong> Invadir contas, formar gangues, controlar remotamente.</li>
-                        <li><strong>🃏 Memes ofensivos:</strong> Criados para ridicularizar ou expor alguém.</li>
-                        <li><strong>🗳️ Votações difamatórias:</strong> Enquetes para humilhar a vítima.</li>
-                        <li><strong>⚠️ Challengers de exclusão:</strong> Desafios que isolam pessoas.</li>
-                        <li><strong>📞 Ligações silenciosas ou ameaçadoras.</strong></li>
-                        <li><strong>🔓 Roubo de celular para perseguir outros.</strong></li>
-                        <li><strong>📧 Envio de imagens/vídeos constrangedores.</strong></li>
-                        <li><strong>🕵️ Perfis falsos para magoar ou enganar.</strong></li>
+                        <li><strong>🎮 Roubo em jogos:</strong> Invadir contas, formar gangues.</li>
+                        <li><strong>🃏 Memes ofensivos:</strong> Ridicularizar ou expor alguém.</li>
+                        <li><strong>🗳️ Votações difamatórias:</strong> Enquetes para humilhar.</li>
+                        <li><strong>⚠️ Challengers de exclusão:</strong> Desafios que isolam.</li>
+                        <li><strong>🚫 Exclusão digital:</strong> Bloquear intencionalmente.</li>
                     </ul>
                 </div>
                 <p><span class="badge">Baseado em: Melo, 2011; Willard, 2007</span></p>
@@ -330,7 +333,7 @@
         <div class="slide">
             <div class="content">
                 <h2>Resultados das Pesquisas 📈</h2>
-                <p style="text-align: center;">Comparativo entre as experiências do nosso público com bullying e cyberbullying.</p>
+                <p style="text-align: center;">Comparativo entre as experiências do nosso público.</p>
                 <div class="charts-wrapper">
                     <div class="chart-container">
                         <h3 style="font-size: 1.1rem; color: #1e293b;">Bullying (presencial)</h3>
@@ -343,16 +346,18 @@
                 </div>
                 <button class="update-btn" id="refreshChartsBtn">🔄 Atualizar Gráficos em Tempo Real</button>
                 <div id="chartErrorMsg" class="error-msg" style="display:none;"></div>
-                <p style="font-size: 0.8rem; text-align: center; margin-top: 15px;">*Os gráficos refletem as respostas anônimas dos participantes. Clique em "Atualizar" para ver novos votos.</p>
             </div>
         </div>
 
         <div class="slide">
             <div class="content">
-                <h2>🎮 Jogo de Cartas: Bullying & Cyberbullying</h2>
-                <p>Selecione a série e clique nas cartas para discutir as perguntas com a turma. Cada pergunta traz uma imagem simbólica e uma proposta de prevenção.</p>
+                <h2>🎮 Jogo de Cartas de Prevenção</h2>
+                <p>Selecione a série. <strong>Clique nas cartas para revelar ou esconder</strong> as ideias de prevenção e discutir com a turma.</p>
                 <div class="grade-series" id="series-buttons"></div>
-                <div id="cards-container" class="cards-container"></div>
+                
+                <div class="cards-scroll-area">
+                    <div id="cards-container" class="cards-container"></div>
+                </div>
             </div>
         </div>
 
@@ -410,12 +415,12 @@
                 { pergunta: "De que forma o anonimato na internet contribui para a prática do cyberbullying?", imagem: "👤❓", prevencao: "💡 Prevenção: Discuta a falsa sensação de impunidade. Mostre que rastros digitais existem e há responsabilização." }
             ],
             "8º Ano": [
-                { pergunta: "As redes sociais são ótimas brechas para o bullying, ou seja, cyberbullying. Isso pode causar isolamento social?", imagem: "📱🚷", prevencao: "💡 Prevenção: Promova atividades de integração presencial. Ensine a configurar privacidade e filtrar contatos." },
+                { pergunta: "As redes sociais são ótimas brechas para o cyberbullying. Isso pode causar isolamento social?", imagem: "📱🚷", prevencao: "💡 Prevenção: Promova atividades de integração presencial. Ensine a configurar privacidade e filtrar contatos." },
                 { pergunta: "Como o bullying surge principalmente entre adolescentes e o que fazer para acabar com isso?", imagem: "👥⚡", prevencao: "💡 Prevenção: Crie comitês de mediação entre pares. Incentive a cultura de paz com projetos de liderança positiva." }
             ],
             "9º Ano": [
                 { pergunta: "Como devemos lidar com o bullying em contexto escolar?", imagem: "🏫🤝", prevencao: "💡 Prevenção: Protocolo claro: ouvir, documentar, notificar família, acompanhar vítima e agressor com equipe multidisciplinar." },
-                { pergunta: "Como identificar uma vítima de cyberbullying?", imagem: "🔍😟", prevencao: "💡 Prevenção: Fique atento a mudanças de humor, isolamento, queda no desempenho, medo de usar dispositivos. Converse em particular." }
+                { pergunta: "Como identificar uma vítima de cyberbullying?", imagem: "🔍😟", prevencao: "💡 Prevenção: Fique atento a mudanças de humor, isolamento, queda no desempenho. Converse em particular." }
             ]
         };
 
@@ -444,7 +449,7 @@
             if (index === 1) restorePollUI('poll1');
             if (index === 5) restorePollUI('poll2');
             
-            // O slide 8 é o índice 8 na array
+            // Slide 8 (Gráficos)
             if (index === 8) loadCharts();
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -519,7 +524,7 @@
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams({ pollId: pollId, answer: answer })
+                    body: newSearchParams({ pollId: pollId, answer: answer })
                 });
                 feedbackEl.innerHTML = "Voto registrado com sucesso! ✔️";
                 feedbackEl.style.color = "#10b981";
@@ -610,11 +615,16 @@
             const cards = gameData[currentSerie];
             const container = document.getElementById('cards-container');
             if (!cards) return;
-            container.innerHTML = cards.map(card => `
-                <div class="card">
+            
+            container.innerHTML = cards.map((card, index) => `
+                <div class="card" onclick="this.classList.toggle('revealed')">
                     <div class="card-img">${card.imagem || '📌'}</div>
                     <div class="card-content">
                         <div class="card-question">❓ ${card.pergunta}</div>
+                        <div class="card-instruction">
+                            <span class="instruction-show">👉 Clique para mostrar a resposta</span>
+                            <span class="instruction-hide">👇 Clique para esconder a resposta</span>
+                        </div>
                         <div class="card-prevention">${card.prevencao}</div>
                     </div>
                 </div>
@@ -642,7 +652,7 @@
         setupPollListeners();
         renderSeriesButtons();
         renderCards();
-        showSlide(0); // Inicia
+        showSlide(0); // Inicia no Slide 0
     </script>
 </body>
 </html>
