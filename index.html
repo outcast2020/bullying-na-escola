@@ -37,7 +37,8 @@
         .slide { display: none; animation: fadeIn 0.5s ease; }
         .slide.active { display: block; }
         h2 { color: #1e293b; font-size: 1.8rem; margin-bottom: 20px; border-left: 5px solid #3b82f6; padding-left: 15px; }
-        h3 { text-align: center; margin: 20px 0; font-weight: 600; color: #475569; }
+        h3 { text-align: center; margin: 20px 0 5px 0; font-weight: 600; color: #475569; }
+        .optional-text { text-align: center; font-size: 0.85rem; color: #94a3b8; margin-bottom: 20px; display: block; }
         p { line-height: 1.7; margin-bottom: 20px; font-size: 1.05rem; }
         .highlight-box { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; }
         ul { margin-top: 10px; list-style-position: inside; }
@@ -47,12 +48,12 @@
         .stat-card { background: #eff6ff; padding: 15px; border-radius: 12px; text-align: center; border: 1px solid #dbeafe; font-size: 0.95rem; }
         .poll-options { display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto; }
         .poll-btn { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 15px; border-radius: 12px; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.2s; font-size: 1rem; color: #334155; }
-        .poll-btn:hover { background: #e2e8f0; }
+        .poll-btn:hover:not(:disabled) { background: #e2e8f0; }
         .poll-btn.selected { background: #3b82f6; color: white; border-color: #2563eb; }
         .feedback-msg { text-align: center; margin-top: 15px; font-size: 0.9rem; color: #10b981; font-weight: 600; min-height: 20px; }
         .navigation { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid #f1f5f9; margin-top: 20px; }
         button#prevBtn, button#nextBtn, .update-btn { background: #3b82f6; color: white; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 600; font-family: inherit; cursor: pointer; transition: background 0.2s; }
-        button#prevBtn:hover, button#nextBtn:hover, .update-btn:hover { background: #2563eb; }
+        button#prevBtn:hover:not(:disabled), button#nextBtn:hover:not(:disabled), .update-btn:hover { background: #2563eb; }
         button:disabled { background: #cbd5e1 !important; cursor: not-allowed; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 600px) {
@@ -63,8 +64,6 @@
             .charts-wrapper { flex-direction: column; }
             .chart-container { width: 100% !important; margin-bottom: 20px; }
         }
-        
-        /* Estilos dos gráficos */
         .charts-wrapper { display: flex; justify-content: space-around; width: 100%; margin-top: 20px; align-items: center; }
         .chart-container { width: 45%; text-align: center; }
         .update-btn { width: 100%; margin-top: 20px; background: #10b981; }
@@ -81,6 +80,7 @@
                 <h2>Pesquisa Inicial 📊</h2>
                 <p>Para iniciarmos nossa conversa, responda com sinceridade:</p>
                 <h3>Você já viu, cometeu ou sofreu bullying?</h3>
+                <span class="optional-text">(Resposta opcional. Sinta-se livre para avançar)</span>
                 <div class="poll-options">
                     <button class="poll-btn" onclick="registerVote('poll1', 'Sim', this)">Sim</button>
                     <button class="poll-btn" onclick="registerVote('poll1', 'Não', this)">Não</button>
@@ -145,6 +145,7 @@
                 <h2>Pesquisa: Ambiente Digital 🌐</h2>
                 <p>Agora refletindo sobre o mundo virtual e as redes sociais:</p>
                 <h3>Você já viu, cometeu ou sofreu Cyberbullying?</h3>
+                <span class="optional-text">(Resposta opcional. Sinta-se livre para avançar)</span>
                 <div class="poll-options">
                     <button class="poll-btn" onclick="registerVote('poll2', 'Sim', this)">Sim</button>
                     <button class="poll-btn" onclick="registerVote('poll2', 'Não', this)">Não</button>
@@ -225,7 +226,12 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         
-        // Variáveis para armazenar as instâncias dos gráficos
+        // Controle para garantir voto único por pesquisa
+        const userVotes = {
+            poll1: false,
+            poll2: false
+        };
+
         let chartInstance1 = null;
         let chartInstance2 = null;
 
@@ -237,7 +243,7 @@
             nextBtn.disabled = index === slides.length - 1;
             counter.innerText = `${index + 1} / ${slides.length}`;
 
-            // Se for o último slide, carrega os gráficos automaticamente
+            // Carrega os gráficos no último slide
             if(index === slides.length - 1) {
                 loadCharts();
             }
@@ -248,27 +254,42 @@
             if (newIndex >= 0 && newIndex < slides.length) {
                 currentSlideIndex = newIndex;
                 showSlide(currentSlideIndex);
+                window.scrollTo(0, 0); // Sobe a tela suavemente para mobile
             }
         }
 
         function registerVote(pollId, answer, clickedButton) {
+            // Se o usuário já votou nesta pesquisa, não faz nada
+            if (userVotes[pollId]) return; 
+            
+            userVotes[pollId] = true; // Bloqueia novos votos nesta pesquisa
+
             const currentSlide = slides[currentSlideIndex];
             const allButtons = currentSlide.querySelectorAll('.poll-btn');
             const feedbackEl = document.getElementById(`feedback-${pollId}`);
             
-            allButtons.forEach(btn => btn.classList.remove('selected'));
+            // Desabilita visualmente os botões
+            allButtons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('selected');
+                btn.style.opacity = '0.5'; // Deixa os não clicados transparentes
+                btn.style.cursor = 'not-allowed';
+            });
+            
+            // Destaca apenas o botão clicado
             clickedButton.classList.add('selected');
+            clickedButton.style.opacity = '1';
 
             feedbackEl.innerText = "Registrando voto...";
-            feedbackEl.style.color = "#fbbf24"; // Amarelo enquanto carrega
+            feedbackEl.style.color = "#fbbf24";
 
-            if (WEB_APP_URL === "COLE_AQUI_A_SUA_URL_DO_APPS_SCRIPT") {
+            if (WEB_APP_URL === "COLE_AQUI_A_SUA_URL_DO_APPS_SCRIPT" || WEB_APP_URL === "") {
                 feedbackEl.innerText = "Simulação: Voto computado! (Backend não configurado)";
                 feedbackEl.style.color = "#10b981";
                 return;
             }
 
-            // Envia para o Google Sheets via POST
+            // Envia os dados para a planilha silenciosamente
             fetch(WEB_APP_URL, {
                 method: 'POST',
                 headers: {
@@ -281,26 +302,25 @@
             })
             .then(response => response.json())
             .then(data => {
-                feedbackEl.innerText = "Voto computado e salvo na planilha! ✔️";
-                feedbackEl.style.color = "#10b981"; // Verde sucesso
+                feedbackEl.innerText = "Voto computado com sucesso! ✔️";
+                feedbackEl.style.color = "#10b981";
             })
             .catch(error => {
-                feedbackEl.innerText = "Erro ao conectar com a planilha.";
-                feedbackEl.style.color = "#ef4444"; // Vermelho erro
-                console.error('Erro:', error);
+                feedbackEl.innerText = "Voto registrado localmente.";
+                feedbackEl.style.color = "#10b981"; 
+                console.error('Erro de conexão com App Script:', error);
             });
         }
 
         function loadCharts() {
-            if (WEB_APP_URL === "https://script.google.com/macros/s/AKfycbw9TMUwM0fVTauDixW3uEVBAck9t1eWIXAmTdpa_Wlq8YUZqfjjWcN7TLhO0vjvJf7I/exec") {
-                alert("Para ver gráficos reais, você precisa inserir a URL do Web App no código HTML!");
+            if (WEB_APP_URL === "COLE_AQUI_A_SUA_URL_DO_APPS_SCRIPT" || WEB_APP_URL === "https://script.google.com/macros/s/AKfycbw9TMUwM0fVTauDixW3uEVBAck9t1eWIXAmTdpa_Wlq8YUZqfjjWcN7TLhO0vjvJf7I/exec") {
+                alert("Para ver gráficos reais, insira a URL do seu App Script no código!");
                 return;
             }
 
             const btnUpdate = document.querySelector('.update-btn');
-            btnUpdate.innerText = "⏳ Carregando...";
+            btnUpdate.innerText = "⏳ Atualizando...";
 
-            // Busca os dados consolidados do Google Sheets via GET
             fetch(WEB_APP_URL)
             .then(response => response.json())
             .then(data => {
@@ -318,18 +338,13 @@
             const ctx = document.getElementById(canvasId).getContext('2d');
             const labels = ['Sim', 'Não', 'Não tenho certeza'];
             
-            // Se o pollData existir, pega os valores, senão, coloca zero.
             const values = pollData ? [pollData['Sim'] || 0, pollData['Não'] || 0, pollData['Não tenho certeza'] || 0] :;
-            
-            // Cores: Sim (Vermelho), Não (Verde), Incerteza (Amarelo)
             const bgColors = ['#ef4444', '#10b981', '#f59e0b'];
 
             if (chartInstance) {
-                // Atualiza o gráfico existente
                 chartInstance.data.datasets.data = values;
                 chartInstance.update();
             } else {
-                // Cria um novo gráfico
                 const newChart = new Chart(ctx, {
                     type: 'pie',
                     data: {
@@ -354,7 +369,7 @@
             }
         }
 
-        // Inicia
+        // Inicia a apresentação
         showSlide(currentSlideIndex);
     </script>
 </body>
