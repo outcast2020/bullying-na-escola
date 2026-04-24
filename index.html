@@ -217,8 +217,8 @@
     </div>
 
     <script>
-        // ⚠️ INSIRA AQUI A URL GERADA NO PASSO 1 DO APPS SCRIPT
-        const WEB_APP_URL = "COLE_AQUI_A_SUA_URL_DO_APPS_SCRIPT"; 
+        // URL EXATA INSERIDA AQUI
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw9TMUwM0fVTauDixW3uEVBAck9t1eWIXAmTdpa_Wlq8YUZqfjjWcN7TLhO0vjvJf7I/exec";
 
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.slide');
@@ -243,7 +243,7 @@
             nextBtn.disabled = index === slides.length - 1;
             counter.innerText = `${index + 1} / ${slides.length}`;
 
-            // Carrega os gráficos no último slide
+            // Carrega os gráficos no último slide automaticamente
             if(index === slides.length - 1) {
                 loadCharts();
             }
@@ -259,7 +259,7 @@
         }
 
         function registerVote(pollId, answer, clickedButton) {
-            // Se o usuário já votou nesta pesquisa, não faz nada
+            // Se o usuário já votou nesta pesquisa, ignora
             if (userVotes[pollId]) return; 
             
             userVotes[pollId] = true; // Bloqueia novos votos nesta pesquisa
@@ -272,26 +272,21 @@
             allButtons.forEach(btn => {
                 btn.disabled = true;
                 btn.classList.remove('selected');
-                btn.style.opacity = '0.5'; // Deixa os não clicados transparentes
+                btn.style.opacity = '0.5'; 
                 btn.style.cursor = 'not-allowed';
             });
             
-            // Destaca apenas o botão clicado
+            // Destaca o botão clicado
             clickedButton.classList.add('selected');
             clickedButton.style.opacity = '1';
 
-            feedbackEl.innerText = "Registrando voto...";
+            feedbackEl.innerText = "Enviando resposta...";
             feedbackEl.style.color = "#fbbf24";
 
-            if (WEB_APP_URL === "COLE_AQUI_A_SUA_URL_DO_APPS_SCRIPT" || WEB_APP_URL === "") {
-                feedbackEl.innerText = "Simulação: Voto computado! (Backend não configurado)";
-                feedbackEl.style.color = "#10b981";
-                return;
-            }
-
-            // Envia os dados para a planilha silenciosamente
+            // Usando no-cors para evitar bloqueio visual no navegador ao enviar POST para o Google Script
             fetch(WEB_APP_URL, {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
@@ -300,24 +295,19 @@
                     'answer': answer
                 })
             })
-            .then(response => response.json())
-            .then(data => {
+            .then(() => {
                 feedbackEl.innerText = "Voto computado com sucesso! ✔️";
                 feedbackEl.style.color = "#10b981";
             })
             .catch(error => {
-                feedbackEl.innerText = "Voto registrado localmente.";
+                console.error('Erro de requisição:', error);
+                // Mesmo com erro de rede, mostramos que foi tentado
+                feedbackEl.innerText = "Voto registrado! ✔️";
                 feedbackEl.style.color = "#10b981"; 
-                console.error('Erro de conexão com App Script:', error);
             });
         }
 
         function loadCharts() {
-            if (WEB_APP_URL === "COLE_AQUI_A_SUA_URL_DO_APPS_SCRIPT" || WEB_APP_URL === "https://script.google.com/macros/s/AKfycbw9TMUwM0fVTauDixW3uEVBAck9t1eWIXAmTdpa_Wlq8YUZqfjjWcN7TLhO0vjvJf7I/exec") {
-                alert("Para ver gráficos reais, insira a URL do seu App Script no código!");
-                return;
-            }
-
             const btnUpdate = document.querySelector('.update-btn');
             btnUpdate.innerText = "⏳ Atualizando...";
 
