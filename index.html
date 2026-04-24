@@ -63,6 +63,8 @@
             .instagram-handle { top: 10px; right: 10px; font-size: 0.8rem; }
             .charts-wrapper { flex-direction: column; }
             .chart-container { width: 100% !important; margin-bottom: 20px; }
+            .header-container { flex-direction: column; text-align: center; }
+            .school-logo { margin-bottom: 15px; }
         }
         .charts-wrapper { display: flex; justify-content: space-around; width: 100%; margin-top: 20px; align-items: flex-start; flex-wrap: wrap; }
         .chart-container { width: 45%; min-width: 250px; text-align: center; margin-bottom: 20px; }
@@ -72,7 +74,7 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .badge { background: #e2e8f0; border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 10px; }
 
-        /* Estilos específicos para o slide de apresentação pessoal (compatível com o design) */
+        /* Estilos específicos para o slide de apresentação */
         .personal-card {
             border: 2px solid #e2e8f0;
             padding: 20px;
@@ -115,6 +117,38 @@
         .thanks-slide p {
             font-size: 1.3rem;
         }
+        /* Estilos para o cabeçalho da apresentação */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .school-logo img {
+            max-width: 120px;
+            height: auto;
+            border-radius: 12px;
+        }
+        .title-container {
+            text-align: center;
+        }
+        .school-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+        .lecture-title {
+            font-size: 1.2rem;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        @media (max-width: 600px) {
+            .school-name { font-size: 1.3rem; }
+            .lecture-title { font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -124,6 +158,16 @@
         
         <!-- SLIDE 0 - APRESENTAÇÃO PESSOAL (NOVO) -->
         <div class="slide">
+            <!-- Cabeçalho com logo, escola e título -->
+            <div class="header-container">
+                <div class="school-logo">
+                    <img src="https://raw.githubusercontent.com/outcast2020/bullying-na-escola/main/logo-escola.png" alt="Logo Centro Escolar Hemariel" onerror="this.src='https://placehold.co/120x120?text=Logo'">
+                </div>
+                <div class="title-container">
+                    <div class="school-name">Centro Escolar Hemariel</div>
+                    <div class="lecture-title">Cyberbullying ou Bullying em tempos da cibercultura?</div>
+                </div>
+            </div>
             <div class="content personal-card">
                 <h2>Carlos Vidal Guerrero</h2>
                 <p style="margin-top: 15px;">
@@ -333,7 +377,7 @@
             </div>
         </div>
 
-        <!-- SLIDE 9 - AGRADECIMENTO FINAL (NOVO) -->
+        <!-- SLIDE 9 - AGRADECIMENTO FINAL -->
         <div class="slide thanks-slide">
             <div class="content">
                 <h2>🙏 Obrigado!</h2>
@@ -550,7 +594,7 @@
         document.getElementById('refreshChartsBtn')?.addEventListener('click', loadCharts);
         
         setupPollListeners();
-        showSlide(0); // começa no slide de apresentação pessoal
+        showSlide(0);
     </script>
 </body>
 </html>
