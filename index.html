@@ -45,17 +45,64 @@
         .grid-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px; }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin: 20px 0; }
         .stat-card { background: #eff6ff; padding: 15px; border-radius: 12px; text-align: center; border: 1px solid #dbeafe; font-size: 0.95rem; }
+        
+        /* Enquetes */
         .poll-options { display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto; }
         .poll-btn { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 15px; border-radius: 12px; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.2s; font-size: 1rem; color: #334155; }
         .poll-btn:hover:not(:disabled) { background: #e2e8f0; }
         .poll-btn.selected { background: #3b82f6; color: white; border-color: #2563eb; }
         .feedback-msg { text-align: center; margin-top: 15px; font-size: 0.9rem; font-weight: 600; min-height: 50px; }
+        
+        /* Navegação */
         .navigation { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid #f1f5f9; margin-top: 20px; }
         button#prevBtn, button#nextBtn, .update-btn { background: #3b82f6; color: white; border: none; padding: 12px 25px; border-radius: 10px; font-weight: 600; font-family: inherit; cursor: pointer; transition: background 0.2s; }
         button#prevBtn:hover:not(:disabled), button#nextBtn:hover:not(:disabled), .update-btn:hover { background: #2563eb; }
         button:disabled { background: #cbd5e1 !important; cursor: not-allowed; }
         .error-msg { color: #dc2626; font-size: 0.85rem; text-align: center; margin-top: 10px; }
+        
+        /* Animações e Gráficos */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .charts-wrapper { display: flex; justify-content: space-around; width: 100%; margin-top: 20px; align-items: flex-start; flex-wrap: wrap; }
+        .chart-container { width: 45%; min-width: 250px; text-align: center; margin-bottom: 20px; }
+        .update-btn { width: 100%; margin-top: 20px; background: #10b981; }
+        .update-btn:hover { background: #059669; }
+        .loading-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: #fff; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .badge { background: #e2e8f0; border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 10px; }
+
+        /* Estilos do Jogo de Cartas */
+        .grade-series { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 25px; }
+        .serie-btn { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 600; color: #475569; transition: all 0.2s; font-family: 'Inter', sans-serif;}
+        .serie-btn:hover { background: #e2e8f0; }
+        .serie-btn.active { background: #3b82f6; color: white; border-color: #2563eb; }
+        .cards-container { display: flex; flex-direction: column; gap: 15px; }
+        .card { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 16px; padding: 20px; display: flex; align-items: flex-start; gap: 20px; transition: transform 0.2s, box-shadow 0.2s; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: #cbd5e1; }
+        .card-img { font-size: 2.5rem; background: #f8fafc; padding: 15px; border-radius: 16px; display: flex; align-items: center; justify-content: center; min-width: 80px; }
+        .card-content { flex: 1; text-align: left; }
+        .card-question { font-weight: 700; color: #1e293b; margin-bottom: 10px; font-size: 1.1rem; }
+        .card-prevention { font-size: 0.95rem; color: #065f46; background: #d1fae5; padding: 10px 15px; border-radius: 10px; border-left: 4px solid #10b981; }
+
+        /* Estilos do slide de apresentação */
+        .personal-card { border: 2px solid #e2e8f0; padding: 20px; border-radius: 24px; background-color: #fff; box-shadow: 0 8px 16px -6px rgba(0,0,0,0.05); }
+        .personal-card h2 { margin-top: 0; color: #1e293b; border-bottom: 3px solid #3b82f6; display: inline-block; padding-bottom: 4px; }
+        .personal-card p { font-size: 1rem; text-align: justify; color: #334155; }
+        .link-icons a { text-decoration: none; font-size: 0.9rem; margin-right: 15px; font-weight: 500; }
+        details summary { cursor: pointer; font-weight: 600; color: #1e293b; margin-top: 12px; }
+        details ul { margin-top: 8px; padding-left: 20px; }
+        hr { margin: 18px 0; border: none; border-top: 1px solid #e2e8f0; }
+        .thanks-slide { text-align: center; padding: 60px 20px; }
+        .thanks-slide h2 { border-left: none; font-size: 3rem; color: #3b82f6; margin-bottom: 20px; }
+        .thanks-slide p { font-size: 1.3rem; }
+        
+        /* Cabeçalho da apresentação */
+        .header-container { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+        .school-logo img { max-width: 120px; height: auto; border-radius: 12px; }
+        .title-container { text-align: center; }
+        .school-name { font-size: 1.6rem; font-weight: 700; color: #1e293b; margin-bottom: 5px; }
+        .lecture-title { font-size: 1.2rem; color: #3b82f6; font-weight: 600; }
+        
+        /* Responsividade */
         @media (max-width: 600px) {
             .grid-list { grid-template-columns: 1fr; }
             .presentation-container { padding: 25px; margin: 10px; }
@@ -65,89 +112,10 @@
             .chart-container { width: 100% !important; margin-bottom: 20px; }
             .header-container { flex-direction: column; text-align: center; }
             .school-logo { margin-bottom: 15px; }
-        }
-        .charts-wrapper { display: flex; justify-content: space-around; width: 100%; margin-top: 20px; align-items: flex-start; flex-wrap: wrap; }
-        .chart-container { width: 45%; min-width: 250px; text-align: center; margin-bottom: 20px; }
-        .update-btn { width: 100%; margin-top: 20px; background: #10b981; }
-        .update-btn:hover { background: #059669; }
-        .loading-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: #fff; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .badge { background: #e2e8f0; border-radius: 20px; padding: 4px 12px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 10px; }
-
-        /* Estilos específicos para o slide de apresentação */
-        .personal-card {
-            border: 2px solid #e2e8f0;
-            padding: 20px;
-            border-radius: 24px;
-            background-color: #fff;
-            box-shadow: 0 8px 16px -6px rgba(0,0,0,0.05);
-        }
-        .personal-card h2 {
-            margin-top: 0;
-            color: #1e293b;
-            border-bottom: 3px solid #3b82f6;
-            display: inline-block;
-            padding-bottom: 4px;
-        }
-        .personal-card p { font-size: 1rem; text-align: justify; color: #334155; }
-        .link-icons a {
-            text-decoration: none;
-            font-size: 0.9rem;
-            margin-right: 15px;
-            font-weight: 500;
-        }
-        details summary {
-            cursor: pointer;
-            font-weight: 600;
-            color: #1e293b;
-            margin-top: 12px;
-        }
-        details ul { margin-top: 8px; padding-left: 20px; }
-        hr { margin: 18px 0; border: none; border-top: 1px solid #e2e8f0; }
-        .thanks-slide {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .thanks-slide h2 {
-            border-left: none;
-            font-size: 3rem;
-            color: #3b82f6;
-            margin-bottom: 20px;
-        }
-        .thanks-slide p {
-            font-size: 1.3rem;
-        }
-        /* Estilos para o cabeçalho da apresentação */
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        .school-logo img {
-            max-width: 120px;
-            height: auto;
-            border-radius: 12px;
-        }
-        .title-container {
-            text-align: center;
-        }
-        .school-name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 5px;
-        }
-        .lecture-title {
-            font-size: 1.2rem;
-            color: #3b82f6;
-            font-weight: 600;
-        }
-        @media (max-width: 600px) {
             .school-name { font-size: 1.3rem; }
             .lecture-title { font-size: 1rem; }
+            .card { flex-direction: column; align-items: center; text-align: center; }
+            .card-content { text-align: center; }
         }
     </style>
 </head>
@@ -156,76 +124,73 @@
 
     <div class="presentation-container">
         
-       <!-- SLIDE 0 - APRESENTAÇÃO PESSOAL (COM QR CODE) -->
-<div class="slide">
-    <div class="header-container">
-        <div class="school-logo">
-            <img src="https://raw.githubusercontent.com/outcast2020/bullying-na-escola/main/logo-escola.png" alt="Logo Centro Escolar Hemariel" onerror="this.src='https://placehold.co/120x120?text=Logo'">
-        </div>
-        <div class="title-container">
-            <div class="school-name">Centro Escolar Hemariel</div>
-            <div class="lecture-title">Cyberbullying ou Bullying em tempos da cibercultura?</div>
-        </div>
-    </div>
-    <div class="content personal-card">
-        <h2>Carlos Vidal Guerrero</h2>
-        <p style="margin-top: 15px;">
-            Mestre em Educação e Contemporaneidade (UNEB), com pesquisa sobre perspectivas epistemológicas da Inteligência Artificial Generativa na educação. Licenciado em Filosofia Crítica (USAL) e Bacharel em Teologia Latino-americana (FAJE). 
-            Com mais de 11 anos de experiência em projetos educativos na América Latina, atua como pesquisador e facilitador em escrita criativa e letramento em Inteligência Artificial. 
-            É Coordenador Pedagógico do <strong>Cordel 2.0</strong>, desenvolvendo práticas que integram ética tecnológica, pedagogia crítica e cultura digital para o empoderamento comunitário.
-        </p>
-        <div class="link-icons" style="margin: 15px 0;">
-            <a href="https://www.linkedin.com/in/carlosvidalguerrero/" target="_blank" style="color:#0077b5;">🔗 <strong>LinkedIn</strong></a>
-            <a href="https://www.instagram.com/cjvidalguerrero/" target="_blank" style="color:#e1306c;">📸 <strong>Instagram</strong></a>
-            <a href="http://lattes.cnpq.br/7166167446578600" target="_blank" style="color:#2c3e50;">🎓 <strong>Lattes</strong></a>
-        </div>
-        <hr>
-        <details>
-            <summary>📜 Atuação Cultural, Educacional e Social</summary>
-            <ul>
-                <li><strong>Cordel 2.0 – Espaço Cultural Alagados (Salvador/BA)</strong><br>Co-coordenação e implementação de oficinas de escrita criativa com IA generativa; programação cultural; publicação de antologia autoral; fortalecimento da identidade territorial e inclusão digital. (2024–Atual)</li>
-                <li><strong>Escrita Criativa em Tempos de Inteligência Artificial</strong> — Fundação Pedro Calmon / Biblioteca Juracy Magalhães Jr.<br>Design pedagógico, facilitação e mentoria em curso de escrita poética com diálogo entre literatura popular e LLMs. Democratização do acesso à tecnologia e formação de multiplicadores culturais. (2023–2024)</li>
-                <li><strong>Supervisão de Estágio Pedagógico (UNEB/PPGEduC)</strong><br>Escola Municipal da Engomadeira – Salvador/BA. Supervisão de licenciandas com foco em gestão pedagógica, mediação tecnológica e avaliação. (2024)</li>
-                <li><strong>Coordenação de voluntários — RoboCup Mundial 2025</strong><br>Coordenação de visitas guiadas de escolas, recepção institucional e apoio logístico a equipes de mais de 40 países.</li>
-                <li><strong>Sócio Administrador</strong> — Vidal Guerrero y Farias Servicios Ltda. (Chile, 2022–Atual)</li>
-                <li><strong>Tradutor e Produtor</strong> — Programa televisivo “Conversando con Isabel” — Quadro <em>Puente de Culturas</em>, promovendo intercâmbio cultural Brasil–Chile. (2022–2023)</li>
-                <li><strong>Conselheiro da sociedade civil</strong> — Conselho Municipal de Políticas Culturais de Belo Horizonte (COMUC). (2020–2021)</li>
-                <li><strong>Gestão Nacional de Projetos com Juventude</strong> — Jesuítas Chile<br>Coordenação de iniciativas de formação juvenil e acompanhamento de projetos sociais. (2017–2019)</li>
-                <li><strong>Assistente de Pastoral Social</strong> — Paróquia Santíssima Trindade<br>Gestão de oficinas e projetos sociais em Santa Luzia, periferia de Belo Horizonte. (2016–2017)</li>
-                <li><strong>Projeto de leitura em presídio</strong> — Centro Penitenciário Feminino Horto<br>Criação de ciclo de leitura acompanhado por estudantes de pedagogia, contribuindo para remissão de pena e formação leitora. (2015–2016)</li>
-                <li><strong>Professor de Filosofia e Formação Social</strong> — Colégio San Luis (Antofagasta, Chile). (2012–2014)</li>
-                <li><strong>Arte-educador</strong> — ONG Fé e Alegria (Buenos Aires, Argentina)<br>Educação não formal e desenvolvimento comunitário em contexto de periferia urbana.</li>
-            </ul>
-        </details>
-        <details>
-            <summary>📚 Produção Acadêmica</summary>
-            <ul>
-                <li><strong>ANPEd Nordeste (2024)</strong><br>Relato de experiência: “Questões da Cultura Digital à Educação Contemporânea”. DOI: 10.5281/zenodo.14163902</li>
-                <li><strong>Revista Numinis (2024)</strong><br>Artigo: “Intersección Sujeto – Inteligencia Artificial: fundamentos tecno-filosóficos para uma epistemologia da educação com LLMs.” DOI: 10.5281/zenodo.16730096</li>
-                <li><strong>FORTEC (2024)</strong><br>Artigo completo: “ChatGPT na Educação Contemporânea: a arché da linguagem…”. DOI: 10.293227/zenodo.25257625</li>
-                <li><strong>COPENE-NE / CBPN (2025)</strong><br>“Protagonismo negro e políticas culturais insurgentes: o caso do Cordel 2.0”. DOI: 10.5281/zenodo.17058269</li>
-                <li><strong>COPENE-NE / CBPN (2025)</strong><br>“Desconstruindo o racismo algorítmico: origens e desafios ao ser humano”. DOI: 10.5281/zenodo.17058214</li>
-                <li><strong>XIV Seminário Internacional da Rede Estrado – UNEB (2025)</strong><br>“Cordel 2.0: na interface da Educação, Literatura e Tecnologia”. DOI: 10.5281/zenodo.17059645</li>
-                <li><strong>Congreso de Pedagogía – Universidad de Chile (2026)</strong><br>“Educación y Inteligencia Artificial: um estudo de campo sobre perspectivas epistemológicas em professores e estudantes de pedagogia em Salvador, Bahia.” (Aguardando DOI)</li>
-            </ul>
-        </details>
-        
-        <!-- SEÇÃO DO QR CODE -->
-        <div style="display: flex; justify-content: center; margin-top: 30px; padding: 15px; background: #f8fafc; border-radius: 16px; flex-wrap: wrap; align-items: center; gap: 20px;">
-            <div style="text-align: center;">
-                <p style="margin-bottom: 8px; font-weight: 600; color: #1e293b;">📱 Acesse o material completo</p>
-                <img src="https://quickchart.io/qr?text=https://outcast2020.github.io/bullying-na-escola/&size=150" alt="QR Code do site do projeto" style="width: 120px; height: 120px; border-radius: 12px; margin: 0 auto; display: block;">
-                <p style="font-size: 0.75rem; color: #475569; margin-top: 8px;">Leia o código ao lado</p>
+        <div class="slide active">
+            <div class="header-container">
+                <div class="school-logo">
+                    <img src="https://raw.githubusercontent.com/outcast2020/bullying-na-escola/main/logo-escola.png" alt="Logo Centro Escolar Hemariel" onerror="this.src='https://placehold.co/120x120?text=Logo'">
+                </div>
+                <div class="title-container">
+                    <div class="school-name">Centro Escolar Hemariel</div>
+                    <div class="lecture-title">Cyberbullying ou Bullying em tempos da cibercultura?</div>
+                </div>
             </div>
-            <div style="max-width: 200px;">
-                <a href="https://outcast2020.github.io/bullying-na-escola/" target="_blank" style="text-decoration: none; color: #3b82f6; font-weight: 500;">👉 outcast2020.github.io/bullying-na-escola/</a>
-                <p style="font-size: 0.8rem; color: #64748b; margin-top: 8px;">Site com mais informações sobre a palestra e materiais de apoio.</p>
+            <div class="content personal-card">
+                <h2>Carlos Vidal Guerrero</h2>
+                <p style="margin-top: 15px;">
+                    Mestre em Educação e Contemporaneidade (UNEB), com pesquisa sobre perspectivas epistemológicas da Inteligência Artificial Generativa na educação. Licenciado em Filosofia Crítica (USAL) e Bacharel em Teologia Latino-americana (FAJE). 
+                    Com mais de 11 anos de experiência em projetos educativos na América Latina, atua como pesquisador e facilitador em escrita criativa e letramento em Inteligência Artificial. 
+                    É Coordenador Pedagógico do <strong>Cordel 2.0</strong>, desenvolvendo práticas que integram ética tecnológica, pedagogia crítica e cultura digital para o empoderamento comunitário.
+                </p>
+                <div class="link-icons" style="margin: 15px 0;">
+                    <a href="https://www.linkedin.com/in/carlosvidalguerrero/" target="_blank" style="color:#0077b5;">🔗 <strong>LinkedIn</strong></a>
+                    <a href="https://www.instagram.com/cjvidalguerrero/" target="_blank" style="color:#e1306c;">📸 <strong>Instagram</strong></a>
+                    <a href="http://lattes.cnpq.br/7166167446578600" target="_blank" style="color:#2c3e50;">🎓 <strong>Lattes</strong></a>
+                </div>
+                <hr>
+                <details>
+                    <summary>📜 Atuação Cultural, Educacional e Social</summary>
+                    <ul>
+                        <li><strong>Cordel 2.0 – Espaço Cultural Alagados (Salvador/BA)</strong><br>Co-coordenação e implementação de oficinas de escrita criativa com IA generativa; programação cultural; publicação de antologia autoral; fortalecimento da identidade territorial e inclusão digital. (2024–Atual)</li>
+                        <li><strong>Escrita Criativa em Tempos de Inteligência Artificial</strong> — Fundação Pedro Calmon<br>Design pedagógico, facilitação e mentoria em curso de escrita poética com diálogo entre literatura popular e LLMs. Democratização do acesso à tecnologia e formação de multiplicadores culturais. (2023–2024)</li>
+                        <li><strong>Supervisão de Estágio Pedagógico (UNEB/PPGEduC)</strong><br>Escola Municipal da Engomadeira – Salvador/BA. Supervisão de licenciandas com foco em gestão pedagógica, mediação tecnológica e avaliação. (2024)</li>
+                        <li><strong>Coordenação de voluntários — RoboCup Mundial 2025</strong><br>Coordenação de visitas guiadas de escolas, recepção institucional e apoio logístico a equipes de mais de 40 países.</li>
+                        <li><strong>Sócio Administrador</strong> — Vidal Guerrero y Farias Servicios Ltda. (Chile, 2022–Atual)</li>
+                        <li><strong>Tradutor e Produtor</strong> — Programa televisivo “Conversando con Isabel” — Quadro <em>Puente de Culturas</em>, promovendo intercâmbio cultural Brasil–Chile. (2022–2023)</li>
+                        <li><strong>Conselheiro da sociedade civil</strong> — Conselho Municipal de Políticas Culturais de Belo Horizonte (COMUC). (2020–2021)</li>
+                        <li><strong>Gestão Nacional de Projetos com Juventude</strong> — Jesuítas Chile<br>Coordenação de iniciativas de formação juvenil e acompanhamento de projetos sociais. (2017–2019)</li>
+                        <li><strong>Assistente de Pastoral Social</strong> — Paróquia Santíssima Trindade<br>Gestão de oficinas e projetos sociais em Santa Luzia, periferia de Belo Horizonte. (2016–2017)</li>
+                        <li><strong>Projeto de leitura em presídio</strong> — Centro Penitenciário Feminino Horto<br>Criação de ciclo de leitura acompanhado por estudantes de pedagogia, contribuindo para remissão de pena e formação leitora. (2015–2016)</li>
+                        <li><strong>Professor de Filosofia e Formação Social</strong> — Colégio San Luis (Antofagasta, Chile). (2012–2014)</li>
+                        <li><strong>Arte-educador</strong> — ONG Fé e Alegria (Buenos Aires, Argentina)<br>Educação não formal e desenvolvimento comunitário em contexto de periferia urbana.</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>📚 Produção Acadêmica</summary>
+                    <ul>
+                        <li><strong>ANPEd Nordeste (2024)</strong><br>Relato de experiência: “Questões da Cultura Digital à Educação Contemporânea”. DOI: 10.5281/zenodo.14163902</li>
+                        <li><strong>Revista Numinis (2024)</strong><br>Artigo: “Intersección Sujeto – Inteligencia Artificial: fundamentos tecno-filosóficos para uma epistemologia da educación com LLMs.” DOI: 10.5281/zenodo.16730096</li>
+                        <li><strong>FORTEC (2024)</strong><br>Artigo completo: “ChatGPT na Educação Contemporânea: a arché da linguagem…”. DOI: 10.293227/zenodo.25257625</li>
+                        <li><strong>COPENE-NE / CBPN (2025)</strong><br>“Protagonismo negro e políticas culturais insurgentes: o caso do Cordel 2.0”. DOI: 10.5281/zenodo.17058269</li>
+                        <li><strong>COPENE-NE / CBPN (2025)</strong><br>“Desconstruindo o racismo algorítmico: origens e desafios ao ser humano”. DOI: 10.5281/zenodo.17058214</li>
+                        <li><strong>XIV Seminário Internacional da Rede Estrado – UNEB (2025)</strong><br>“Cordel 2.0: na interface da Educação, Literatura e Tecnologia”. DOI: 10.5281/zenodo.17059645</li>
+                        <li><strong>Congreso de Pedagogía – Universidad de Chile (2026)</strong><br>“Educación y Inteligencia Artificial: um estudo de campo sobre perspectivas epistemológicas em professores e estudantes de pedagogia em Salvador, Bahia.”</li>
+                    </ul>
+                </details>
+                
+                <div style="display: flex; justify-content: center; margin-top: 30px; padding: 15px; background: #f8fafc; border-radius: 16px; flex-wrap: wrap; align-items: center; gap: 20px;">
+                    <div style="text-align: center;">
+                        <p style="margin-bottom: 8px; font-weight: 600; color: #1e293b;">📱 Acesse o material completo</p>
+                        <img src="https://quickchart.io/qr?text=https://outcast2020.github.io/bullying-na-escola/&size=150" alt="QR Code do site do projeto" style="width: 120px; height: 120px; border-radius: 12px; margin: 0 auto; display: block;">
+                        <p style="font-size: 0.75rem; color: #475569; margin-top: 8px;">Leia o código ao lado</p>
+                    </div>
+                    <div style="max-width: 200px;">
+                        <a href="https://outcast2020.github.io/bullying-na-escola/" target="_blank" style="text-decoration: none; color: #3b82f6; font-weight: 500;">👉 outcast2020.github.io/bullying-na-escola/</a>
+                        <p style="font-size: 0.8rem; color: #64748b; margin-top: 8px;">Site com mais informações sobre a palestra e materiais de apoio.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-        <!-- SLIDE 1 - Pesquisa Bullying -->
         <div class="slide">
             <div class="content">
                 <h2>Pesquisa Inicial 📊</h2>
@@ -241,7 +206,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 2 - O que é Bullying -->
         <div class="slide">
             <div class="content">
                 <h2>O que é Bullying?</h2>
@@ -258,7 +222,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 3 - Formas de Bullying -->
         <div class="slide">
             <div class="content">
                 <h2>Formas de Bullying no Brasil</h2>
@@ -283,7 +246,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 4 - Estatísticas -->
         <div class="slide">
             <div class="content">
                 <h2>Estatísticas e Alcance</h2>
@@ -304,7 +266,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 5 - Pesquisa Cyberbullying -->
         <div class="slide">
             <div class="content">
                 <h2>Pesquisa: Ambiente Digital 🌐</h2>
@@ -320,7 +281,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 6 - Cyberbullying: definição -->
         <div class="slide">
             <div class="content">
                 <h2>Cyberbullying</h2>
@@ -337,7 +297,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 7 - Formas de Cyberbullying -->
         <div class="slide">
             <div class="content">
                 <h2>Formas de Cyberbullying</h2>
@@ -368,7 +327,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 8 - Resultados dos Gráficos -->
         <div class="slide">
             <div class="content">
                 <h2>Resultados das Pesquisas 📈</h2>
@@ -389,7 +347,15 @@
             </div>
         </div>
 
-        <!-- SLIDE 9 - AGRADECIMENTO FINAL -->
+        <div class="slide">
+            <div class="content">
+                <h2>🎮 Jogo de Cartas: Bullying & Cyberbullying</h2>
+                <p>Selecione a série e clique nas cartas para discutir as perguntas com a turma. Cada pergunta traz uma imagem simbólica e uma proposta de prevenção.</p>
+                <div class="grade-series" id="series-buttons"></div>
+                <div id="cards-container" class="cards-container"></div>
+            </div>
+        </div>
+
         <div class="slide thanks-slide">
             <div class="content">
                 <h2>🙏 Obrigado!</h2>
@@ -401,37 +367,72 @@
 
         <div class="navigation">
             <button id="prevBtn">Anterior</button>
-            <span id="slide-counter">1 / 10</span>
+            <span id="slide-counter">1 / 11</span>
             <button id="nextBtn">Próximo</button>
         </div>
+
     </div>
     
     <script>
-        // ==================== CONFIGURAÇÕES ====================
+        // ==================== CONFIGURAÇÕES E DADOS ====================
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwxXkrlPTJUDP6GjLsPD-2D2w4Sf3qH_lgtHZJ7zCqYyMx_d0dsXUFUSOmaBFm8czM/exec";
         
-        // Estado da apresentação
+        const gameData = {
+            "1º Ano": [
+                { pergunta: "O que é tratar alguém com respeito?", imagem: "🤝", prevencao: "💡 Prevenção: Elogie atitudes respeitosas na sala. Combine com a turma palavras mágicas (obrigado, com licença, desculpa)." },
+                { pergunta: "O que podemos fazer quando vemos um colega ser maltratado?", imagem: "🛡️", prevencao: "💡 Prevenção: Ensine a 'regra do dedo' – se alguém está triste, chame um adulto. Crie o 'círculo da ajuda'." }
+            ],
+            "2º Ano": [
+                { pergunta: "Brincadeira tem limite? Como saber quando deixa de ser brincadeira?", imagem: "😊➡️😢", prevencao: "💡 Prevenção: Trabalhe com cartões de emoções. Se alguém pede para parar, pare imediatamente." },
+                { pergunta: "Como podemos ajudar um amigo que está triste por causa do bullying?", imagem: "❤️", prevencao: "💡 Prevenção: Incentive a escuta ativa e o apoio coletivo. Crie duplas de 'amigos protetores'." },
+                { pergunta: "O que fazer se alguém te ofende em um jogo ou rede social?", imagem: "🎮⚠️", prevencao: "💡 Prevenção: Não responda, tire print, bloqueie e conte a um adulto. Use o botão de denúncia." }
+            ],
+            "3º Ano": [
+                { pergunta: "É certo compartilhar fotos ou mensagens de alguém sem permissão?", imagem: "📷🚫", prevencao: "💡 Prevenção: Ensine que a imagem é propriedade da pessoa. Peça autorização sempre." },
+                { pergunta: "O que fazer se alguém te mandar mensagens ofensivas?", imagem: "📱💢", prevencao: "💡 Prevenção: Não guarde para si. Mostre a um adulto de confiança e bloqueie o remetente." },
+                { pergunta: "Bloquear ou denunciar alguém pode ajudar? Como?", imagem: "🚫🔒", prevencao: "💡 Prevenção: Bloquear corta contato; denunciar alerta a plataforma. Ambas são ferramentas de proteção." }
+            ],
+            "4º Ano": [
+                { pergunta: "Quem pode ajudar quando algo ruim acontece na internet?", imagem: "👨‍🏫👩‍👧", prevencao: "💡 Prevenção: Elabore uma lista com alunos: pais, professores, conselheiros, disque 100. Colete números de emergência." },
+                { pergunta: "Como uma pessoa se sente quando sofre bullying?", imagem: "😞💔", prevencao: "💡 Prevenção: Roda de conversa sobre empatia. Peça que descrevam sentimentos e como oferecer acolhimento." }
+            ],
+            "5º Ano": [
+                { pergunta: "O que acontece quando alguém pratica bullying?", imagem: "⚖️", prevencao: "💡 Prevenção: Discuta consequências reais (medidas disciplinares, dano moral). Mostre que agressor também precisa de ajuda." },
+                { pergunta: "O que é cyberbullying?", imagem: "🌐👾", prevencao: "💡 Prevenção: Diferencie brincadeira de cyberbullying: repetição, intenção de machucar, desequilíbrio de poder." },
+                { pergunta: "Por que não é certo compartilhar fotos, vídeos ou mensagens sem autorização?", imagem: "📸🚫", prevencao: "💡 Prevenção: Use o 'jogo da cadeira' da privacidade: cada um decide o que quer compartilhar. Respeite limites." }
+            ],
+            "6º Ano": [
+                { pergunta: "O que uma pessoa deve fazer ao sofrer bullying?", imagem: "📢", prevencao: "💡 Prevenção: Não se isole. Conte para um adulto, guarde provas, procure apoio de amigos." },
+                { pergunta: "O que define uma situação como cyberbullying?", imagem: "💻🔍", prevencao: "💡 Prevenção: Analisar se há intencionalidade, repetição e dano psicológico. Use casos reais para debate." }
+            ],
+            "7º Ano": [
+                { pergunta: "Quais são as principais consequências do bullying para a saúde emocional das vítimas?", imagem: "🧠💔", prevencao: "💡 Prevenção: Informe sobre ansiedade, depressão, baixa autoestima. Ofereça acolhimento psicológico." },
+                { pergunta: "De que forma o anonimato na internet contribui para a prática do cyberbullying?", imagem: "👤❓", prevencao: "💡 Prevenção: Discuta a falsa sensação de impunidade. Mostre que rastros digitais existem e há responsabilização." }
+            ],
+            "8º Ano": [
+                { pergunta: "As redes sociais são ótimas brechas para o bullying, ou seja, cyberbullying. Isso pode causar isolamento social?", imagem: "📱🚷", prevencao: "💡 Prevenção: Promova atividades de integração presencial. Ensine a configurar privacidade e filtrar contatos." },
+                { pergunta: "Como o bullying surge principalmente entre adolescentes e o que fazer para acabar com isso?", imagem: "👥⚡", prevencao: "💡 Prevenção: Crie comitês de mediação entre pares. Incentive a cultura de paz com projetos de liderança positiva." }
+            ],
+            "9º Ano": [
+                { pergunta: "Como devemos lidar com o bullying em contexto escolar?", imagem: "🏫🤝", prevencao: "💡 Prevenção: Protocolo claro: ouvir, documentar, notificar família, acompanhar vítima e agressor com equipe multidisciplinar." },
+                { pergunta: "Como identificar uma vítima de cyberbullying?", imagem: "🔍😟", prevencao: "💡 Prevenção: Fique atento a mudanças de humor, isolamento, queda no desempenho, medo de usar dispositivos. Converse em particular." }
+            ]
+        };
+
+        // ==================== LÓGICA DE APRESENTAÇÃO ====================
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.slide');
         const counter = document.getElementById('slide-counter');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         
-        // Controle de votos
-        const userVotes = {
-            poll1: false,
-            poll2: false
-        };
-        const userAnswers = {
-            poll1: null,
-            poll2: null
-        };
+        const userVotes = { poll1: false, poll2: false };
+        const userAnswers = { poll1: null, poll2: null };
         
         let chartBullying = null;
         let chartCyberbullying = null;
         let isLoadingCharts = false;
         
-        // ==================== FUNÇÕES ====================
         function showSlide(index) {
             slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
@@ -440,14 +441,11 @@
             nextBtn.disabled = (index === slides.length - 1);
             counter.innerText = `${index + 1} / ${slides.length}`;
             
-            // Restaura enquetes nos slides corretos (índices 1 = poll1, 5 = poll2)
             if (index === 1) restorePollUI('poll1');
             if (index === 5) restorePollUI('poll2');
             
-            // Carrega gráficos no slide 8 (índice 8)
-            if (index === 8) {
-                loadCharts();
-            }
+            // O slide 8 é o índice 8 na array
+            if (index === 8) loadCharts();
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -460,6 +458,7 @@
             }
         }
         
+        // ==================== LÓGICA DAS ENQUETES ====================
         function restorePollUI(pollId) {
             const container = document.getElementById(`${pollId}-buttons`);
             if (!container) return;
@@ -531,6 +530,7 @@
             }
         }
         
+        // ==================== LÓGICA DOS GRÁFICOS ====================
         async function loadCharts() {
             if (isLoadingCharts) return;
             isLoadingCharts = true;
@@ -548,14 +548,16 @@
                 clearTimeout(timeoutId);
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const data = await response.json();
+                
                 const poll1Data = data.poll1 || { "Sim": 0, "Não": 0, "Não tenho certeza": 0 };
                 const poll2Data = data.poll2 || { "Sim": 0, "Não": 0, "Não tenho certeza": 0 };
+                
                 renderOrUpdateChart('chartBullying', poll1Data);
                 renderOrUpdateChart('chartCyberbullying', poll2Data);
             } catch (error) {
                 console.error("Falha ao carregar gráficos:", error);
                 errorDiv.style.display = 'block';
-                errorDiv.innerHTML = "⚠️ Não foi possível carregar os dados atualizados. Verifique sua conexão ou clique novamente.";
+                errorDiv.innerHTML = "⚠️ Não foi possível carregar os dados atualizados. Verifique sua conexão ou tente novamente.";
                 renderOrUpdateChart('chartBullying', { "Sim": 0, "Não": 0, "Não tenho certeza": 0 });
                 renderOrUpdateChart('chartCyberbullying', { "Sim": 0, "Não": 0, "Não tenho certeza": 0 });
             } finally {
@@ -572,8 +574,9 @@
             const values = [pollData['Sim'] || 0, pollData['Não'] || 0, pollData['Não tenho certeza'] || 0];
             const bgColors = ['#ef4444', '#10b981', '#f59e0b'];
             let chart = (canvasId === 'chartBullying') ? chartBullying : chartCyberbullying;
+            
             if (chart) {
-                chart.data.datasets[0].data = values;
+                chart.data.datasets.data = values;
                 chart.update();
             } else {
                 const newChart = new Chart(ctx, {
@@ -586,97 +589,14 @@
             }
         }
         
-        function setupPollListeners() {
-            document.querySelectorAll('#poll1-buttons .poll-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    if (userVotes.poll1) return;
-                    registerVote('poll1', btn.getAttribute('data-answer'), btn);
-                });
-            });
-            document.querySelectorAll('#poll2-buttons .poll-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    if (userVotes.poll2) return;
-                    registerVote('poll2', btn.getAttribute('data-answer'), btn);
-                });
-            });
-        }
-        
-        prevBtn.addEventListener('click', () => changeSlide(-1));
-        nextBtn.addEventListener('click', () => changeSlide(1));
-        document.getElementById('refreshChartsBtn')?.addEventListener('click', loadCharts);
-        
-        setupPollListeners();
-        showSlide(0);
-    </script>
-
-     <!-- SLIDE 10 - JOGO DE CARTAS (NOVO) -->
-        <div class="slide">
-            <div class="content">
-                <h2>🎮 Jogo de Cartas: Bullying & Cyberbullying</h2>
-                <p>Selecione a série e clique nas cartas para discutir as perguntas com a turma. Cada pergunta traz uma imagem simbólica e uma proposta de prevenção.</p>
-                
-                <div class="grade-series" id="series-buttons"></div>
-                <div id="cards-container" class="cards-container"></div>
-            </div>
-        </div>
-
-        <div class="navigation">
-            <button id="prevBtn">Anterior</button>
-            <span id="slide-counter">1 / 11</span>
-            <button id="nextBtn">Próximo</button>
-        </div>
-    </div>
-
-    <script>
-        // ==================== DADOS DO JOGO DE CARTAS ====================
-        const gameData = {
-            "1º Ano": [
-                { pergunta: "O que é tratar alguém com respeito?", imagem: "🤝", prevencao: "💡 Prevenção: Elogie atitudes respeitosas na sala. Combine com a turma palavras mágicas (obrigado, com licença, desculpa)." },
-                { pergunta: "O que podemos fazer quando vemos um colega ser maltratado?", imagem: "🛡️", prevencao: "💡 Prevenção: Ensine a 'regra do dedo' – se alguém está triste, chame um adulto. Crie o 'círculo da ajuda'." }
-            ],
-            "2º Ano": [
-                { pergunta: "Brincadeira tem limite? Como saber quando deixa de ser brincadeira?", imagem: "😊➡️😢", prevencao: "💡 Prevenção: Trabalhe com cartões de emoções. Se alguém pede para parar, pare imediatamente." },
-                { pergunta: "Como podemos ajudar um amigo que está triste por causa do bullying?", imagem: "❤️", prevencao: "💡 Prevenção: Incentive a escuta ativa e o apoio coletivo. Crie duplas de 'amigos protetores'." },
-                { pergunta: "O que fazer se alguém te ofende em um jogo ou rede social?", imagem: "🎮⚠️", prevencao: "💡 Prevenção: Não responda, tire print, bloqueie e conte a um adulto. Use o botão de denúncia." }
-            ],
-            "3º Ano": [
-                { pergunta: "É certo compartilhar fotos ou mensagens de alguém sem permissão?", imagem: "📷🚫", prevencao: "💡 Prevenção: Ensine que a imagem é propriedade da pessoa. Peça autorização sempre." },
-                { pergunta: "O que fazer se alguém te mandar mensagens ofensivas?", imagem: "📱💢", prevencao: "💡 Prevenção: Não guarde para si. Mostre a um adulto de confiança e bloqueie o remetente." },
-                { pergunta: "Bloquear ou denunciar alguém pode ajudar? Como?", imagem: "🚫🔒", prevencao: "💡 Prevenção: Bloquear corta contato; denunciar alerta a plataforma. Ambas são ferramentas de proteção." }
-            ],
-            "4º Ano": [
-                { pergunta: "Quem pode ajudar quando algo ruim acontece na internet?", imagem: "👨‍🏫👩‍👧", prevencao: "💡 Prevenção: Elabore uma lista com alunos: pais, professores, conselheiros, disque 100. Colete números de emergência." },
-                { pergunta: "Como uma pessoa se sente quando sofre bullying?", imagem: "😞💔", prevencao: "💡 Prevenção: Roda de conversa sobre empatia. Peça que descrevam sentimentos e como oferecer acolhimento." }
-            ],
-            "5º Ano": [
-                { pergunta: "O que acontece quando alguém pratica bullying?", imagem: "⚖️", prevencao: "💡 Prevenção: Discuta consequências reais (medidas disciplinares, dano moral). Mostre que agressor também precisa de ajuda." },
-                { pergunta: "O que é cyberbullying?", imagem: "🌐👾", prevencao: "💡 Prevenção: Diferencie brincadeira de cyberbullying: repetição, intenção de machucar, desequilíbrio de poder." },
-                { pergunta: "Por que não é certo compartilhar fotos, vídeos ou mensagens sem autorização?", imagem: "📸🚫", prevencao: "💡 Prevenção: Use o 'jogo da cadeira' da privacidade: cada um decide o que quer compartilhar. Respeite limites." }
-            ],
-            "6º Ano": [
-                { pergunta: "O que uma pessoa deve fazer ao sofrer bullying?", imagem: "📢", prevencao: "💡 Prevenção: Não se isole. Conte para um adulto, guarde provas, procure apoio de amigos." },
-                { pergunta: "O que define uma situação como cyberbullying?", imagem: "💻🔍", prevencao: "💡 Prevenção: Analisar se há intencionalidade, repetição e dano psicológico. Use casos reais para debate." }
-            ],
-            "7º Ano": [
-                { pergunta: "Quais são as principais consequências do bullying para a saúde emocional das vítimas?", imagem: "🧠💔", prevencao: "💡 Prevenção: Informe sobre ansiedade, depressão, baixa autoestima. Ofereça acolhimento psicológico." },
-                { pergunta: "De que forma o anonimato na internet contribui para a prática do cyberbullying?", imagem: "👤❓", prevencao: "💡 Prevenção: Discuta a falsa sensação de impunidade. Mostre que rastros digitais existem e há responsabilização." }
-            ],
-            "8º Ano": [
-                { pergunta: "As redes sociais são ótimas brechas para o bullying, ou seja, cyberbullying. Isso pode causar isolamento social?", imagem: "📱🚷", prevencao: "💡 Prevenção: Promova atividades de integração presencial. Ensine a configurar privacidade e filtrar contatos." },
-                { pergunta: "Como o bullying surge principalmente entre adolescentes e o que fazer para acabar com isso?", imagem: "👥⚡", prevencao: "💡 Prevenção: Crie comitês de mediação entre pares. Incentive a cultura de paz com projetos de liderança positiva." }
-            ],
-            "9º Ano": [
-                { pergunta: "Como devemos lidar com o bullying em contexto escolar?", imagem: "🏫🤝", prevencao: "💡 Prevenção: Protocolo claro: ouvir, documentar, notificar família, acompanhar vítima e agressor com equipe multidisciplinar." },
-                { pergunta: "Como identificar uma vítima de cyberbullying?", imagem: "🔍😟", prevencao: "💡 Prevenção: Fique atento a mudanças de humor, isolamento, queda no desempenho, medo de usar dispositivos. Converse em particular." }
-            ]
-        };
-
+        // ==================== LÓGICA DO JOGO DE CARTAS ====================
         let currentSerie = "1º Ano";
 
         function renderSeriesButtons() {
             const container = document.getElementById('series-buttons');
             const series = Object.keys(gameData);
             container.innerHTML = series.map(s => `<button class="serie-btn ${s === currentSerie ? 'active' : ''}" data-serie="${s}">${s}</button>`).join('');
+            
             document.querySelectorAll('.serie-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     currentSerie = btn.dataset.serie;
@@ -701,42 +621,28 @@
             `).join('');
         }
 
-        // Inicialização do jogo
-        renderSeriesButtons();
-        renderCards();
-
-        // ==================== LÓGICA DE APRESENTAÇÃO (SLIDES) ====================
-        // Considerando que existem 11 slides no total (0 a 10). Ajuste o contador.
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const counter = document.getElementById('slide-counter');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[index].classList.add('active');
-            prevBtn.disabled = (index === 0);
-            nextBtn.disabled = (index === slides.length - 1);
-            counter.innerText = `${index + 1} / ${slides.length}`;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        function changeSlide(step) {
-            const newIndex = currentSlideIndex + step;
-            if (newIndex >= 0 && newIndex < slides.length) {
-                currentSlideIndex = newIndex;
-                showSlide(currentSlideIndex);
-            }
+        // ==================== INICIALIZAÇÃO EVENTOS ====================
+        function setupPollListeners() {
+            document.querySelectorAll('#poll1-buttons .poll-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (!userVotes.poll1) registerVote('poll1', btn.getAttribute('data-answer'), btn);
+                });
+            });
+            document.querySelectorAll('#poll2-buttons .poll-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (!userVotes.poll2) registerVote('poll2', btn.getAttribute('data-answer'), btn);
+                });
+            });
         }
         
         prevBtn.addEventListener('click', () => changeSlide(-1));
         nextBtn.addEventListener('click', () => changeSlide(1));
+        document.getElementById('refreshChartsBtn')?.addEventListener('click', loadCharts);
         
-        // Inicia no primeiro slide (apresentação)
-        showSlide(0);
+        setupPollListeners();
+        renderSeriesButtons();
+        renderCards();
+        showSlide(0); // Inicia
     </script>
-</body>
-</html>
 </body>
 </html>
