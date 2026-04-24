@@ -1,50 +1,93 @@
-:root {
-    --bg-color: #f4f7f6;
-    --text-color: #333;
-    --accent-color: #4a90e2;
-    --card-bg: #ffffff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Roboto, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    /* Fundo minimalista suave (gradiente sutil) */
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Instagram Handle no canto superior direito */
+.instagram-handle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #4a5568;
+    text-decoration: none;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.presentation-container {
+    background: #ffffff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    padding: 30px;
+    position: relative;
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
-}
-
-header {
-    padding: 15px;
-    text-align: right;
-    font-weight: bold;
-    color: var(--accent-color);
-}
-
-#app {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    justify-content: space-between;
 }
 
 .slide {
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    animation: fadeIn 0.5s ease;
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
-h2 { color: var(--accent-color); margin-bottom: 20px; }
-p { line-height: 1.6; font-size: 1.1rem; }
+.slide.active {
+    display: block;
+}
 
+h2 {
+    color: #2d3748;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: #4a5568;
+    margin: 15px 0;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #4a5568;
+}
+
+ul {
+    list-style-position: inside;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+    color: #4a5568;
+}
+
+/* Botões da Pesquisa */
 .poll-options {
     display: flex;
     flex-direction: column;
@@ -53,30 +96,63 @@ p { line-height: 1.6; font-size: 1.1rem; }
 }
 
 .poll-btn {
+    background: #edf2f7;
+    border: none;
     padding: 12px;
-    border: 2px solid var(--accent-color);
-    background: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #2d3748;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background 0.2s, transform 0.1s;
+    font-family: inherit;
+    font-weight: 500;
 }
 
-.poll-btn:active { background: var(--accent-color); color: white; }
+.poll-btn:hover, .poll-btn:active {
+    background: #e2e8f0;
+    transform: scale(0.98);
+}
 
+.poll-btn.selected {
+    background: #4299e1;
+    color: white;
+}
+
+.feedback-msg {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #48bb78;
+    font-weight: 500;
+}
+
+/* Navegação inferior */
 .navigation {
-    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
+    margin-top: 30px;
+    border-top: 1px solid #edf2f7;
+    padding-top: 15px;
 }
 
-button#nextBtn, button#prevBtn {
-    background: var(--accent-color);
-    color: white;
+.navigation button {
+    background: none;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    color: #4299e1;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.navigation button:disabled {
+    color: #cbd5e0;
+    cursor: not-allowed;
+}
+
+#slide-counter {
+    font-size: 0.9rem;
+    color: #a0aec0;
 }
 
 @keyframes fadeIn {
