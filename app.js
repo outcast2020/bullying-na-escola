@@ -1,71 +1,55 @@
-const slides = [
-    {
-        title: "Pesquisa Inicial",
-        content: "Você já viu, cometeu ou sofreu bullying?",
-        type: "poll"
-    },
-    {
-        title: "O que é Bullying?",
-        content: "Comportamento agressivo, repetitivo e intencional, sem motivação óbvia, exercido por um ou mais indivíduos contra outro.",
-        type: "text"
-    },
-    {
-        title: "Tipos Comuns",
-        content: "Físico (bater), Verbal (insultos), Social (exclusão) e Psicológico (chantagem).",
-        type: "text"
-    },
-    {
-        title: "Sua Experiência Digital",
-        content: "Você já viu, cometeu ou sofreu Cyberbullying?",
-        type: "poll"
-    },
-    {
-        title: "Cyberbullying",
-        content: "O bullying no ambiente digital. Atinge a vítima em qualquer lugar, 24h por dia, com alto poder de disseminação.",
-        type: "text"
-    },
-    {
-        title: "Como Agir?",
-        content: "Não silencie. Busque ajuda, guarde provas (prints) e acolha quem precisa. Empatia é o melhor antídoto.",
-        type: "text"
+let currentSlideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const counter = document.getElementById('slide-counter');
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+            slide.classList.add('active');
+        }
+    });
+
+    // Atualiza botões de navegação
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === slides.length - 1;
+    
+    // Atualiza contador
+    counter.innerText = `${index + 1} / ${slides.length}`;
+}
+
+function changeSlide(step) {
+    const newIndex = currentSlideIndex + step;
+    if (newIndex >= 0 && newIndex < slides.length) {
+        currentSlideIndex = newIndex;
+        showSlide(currentSlideIndex);
     }
-];
-
-let currentSlide = 0;
-
-function renderSlide() {
-    const app = document.getElementById('app');
-    const slideData = slides[currentSlide];
-    
-    let html = `<div class="slide">
-                    <h2>${slideData.title}</h2>
-                    <p>${slideData.content}</p>`;
-    
-    if (slideData.type === 'poll') {
-        html += `
-            <div class="poll-options">
-                <button class="poll-btn" onclick="submitVote('Sim')">Sim</button>
-                <button class="poll-btn" onclick="submitVote('Não')">Não</button>
-                <button class="poll-btn" onclick="submitVote('Não tenho certeza')">Não tenho certeza</button>
-            </div>`;
-    }
-    
-    html += `</div>`;
-    app.innerHTML = html;
-    document.getElementById('progress').innerText = `${currentSlide + 1} / ${slides.length}`;
 }
 
-function changeSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide < 0) currentSlide = 0;
-    if (currentSlide >= slides.length) currentSlide = slides.length - 1;
-    renderSlide();
+// Função para gerenciar os votos das pesquisas
+function registerVote(pollId, answer) {
+    // Aqui no futuro você fará a chamada (fetch) para o backend/planilha
+    console.log(`Resposta registrada para ${pollId}: ${answer}`);
+    
+    // Atualiza o visual dos botões no slide atual
+    const currentSlide = slides[currentSlideIndex];
+    const buttons = currentSlide.querySelectorAll('.poll-btn');
+    
+    buttons.forEach(btn => {
+        btn.classList.remove('selected');
+        if (btn.innerText === answer) {
+            btn.classList.add('selected');
+        }
+        // Opcional: desabilitar botões após voto
+        // btn.disabled = true; 
+    });
+
+    // Mensagem de feedback ao usuário
+    const feedbackEl = document.getElementById(`feedback-${pollId}`);
+    feedbackEl.innerText = "Resposta registrada! Obrigado pela participação.";
 }
 
-function submitVote(option) {
-    alert(`Voto registrado: ${option}. (Aqui você conectará ao seu backend futuramente!)`);
-    changeSlide(1);
-}
-
-// Inicializa
-renderSlide();
+// Inicializa a apresentação
+showSlide(currentSlideIndex);
