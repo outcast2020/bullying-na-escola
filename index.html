@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Apresentação: Bullying e Cyberbullying - Carlos Vidal Guerrero</title>
+    
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/outcast2020/bullying-na-escola/main/favicon.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
@@ -18,6 +21,22 @@
             min-height: 100vh;
             padding: 20px 0;
         }
+        
+        /* Logo Cordel no canto superior esquerdo */
+        .logo-cordel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            max-width: 100px;
+            height: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        .logo-cordel:hover {
+            transform: scale(1.05);
+        }
+
+        /* Instagram no canto superior direito */
         .instagram-handle {
             position: fixed; top: 20px; right: 20px;
             font-size: 0.9rem; font-weight: 700; color: #64748b;
@@ -26,6 +45,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;
         }
         .instagram-handle:hover { color: #3b82f6; transform: translateY(-2px); }
+        
         .presentation-container {
             background: #ffffff; width: 95%; max-width: 1000px; min-height: 550px;
             border-radius: 24px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
@@ -117,6 +137,7 @@
         
         /* Responsividade */
         @media (max-width: 600px) {
+            .logo-cordel { top: 10px; left: 10px; max-width: 70px; }
             .grid-list { grid-template-columns: 1fr; }
             .presentation-container { padding: 25px; margin: 10px; }
             h2 { font-size: 1.5rem; }
@@ -133,6 +154,11 @@
     </style>
 </head>
 <body>
+
+    <a href="https://outcast2020.github.io/bullying-na-escola/" target="_blank">
+        <img src="https://raw.githubusercontent.com/outcast2020/bullying-na-escola/main/logo_cordel_color.png" alt="Logo Cordel" class="logo-cordel">
+    </a>
+
     <a href="https://instagram.com/cjvidalguerrero" target="_blank" class="instagram-handle">@cjvidalguerrero</a>
 
     <div class="presentation-container">
@@ -222,13 +248,13 @@
         <div class="slide">
             <div class="content">
                 <h2>O que é Bullying?</h2>
-                <p>Conceitua-se <strong>bullying</strong> como o abuso de poder físico ou psicológico entre pares, envolvendo dominação e prepotência de um lado, e submissão, humilhação, conformismo, raiva e medo do outro.</p>
+                <p>Conceitua-se <strong>bullying</strong> como o abuso de poder físico ou psicológico entre pares, envolvendo dominação e prepotência de um lado, e submissão, humilhação, conformismo, raiva e medo do outro[cite: 3].</p>
                 <div class="highlight-box">
                     <strong>📌 Três critérios fundamentais (Dan Olweus):</strong>
                     <ul>
-                        <li><strong>Intencionalidade:</strong> comportamento agressivo e intencionalmente nocivo.</li>
-                        <li><strong>Repetição:</strong> comportamento repetitivo (perseguição contínua).</li>
-                        <li><strong>Desequilíbrio de poder:</strong> relação interpessoal assimétrica, com dominação de um lado e submissão do outro.</li>
+                        <li><strong>Intencionalidade:</strong> comportamento agressivo e intencionalmente nocivo[cite: 1, 4].</li>
+                        <li><strong>Repetição:</strong> comportamento repetitivo (perseguição contínua)[cite: 1, 4].</li>
+                        <li><strong>Desequilíbrio de poder:</strong> relação interpessoal assimétrica, com dominação de um lado e submissão do outro[cite: 2, 5].</li>
                     </ul>
                 </div>
                 <p><span class="badge">Fonte: Olweus, 1993; Abrapia, 2000</span></p>
@@ -238,21 +264,21 @@
         <div class="slide">
             <div class="content">
                 <h2>Formas de Bullying no Brasil</h2>
-                <p>Pesquisa da Abrapia (2000) com 5.875 estudantes do Rio de Janeiro identificou as práticas mais comuns:</p>
+                <p>Pesquisa da Abrapia (2000) com 5.875 estudantes do Rio de Janeiro identificou as práticas mais comuns[cite: 31]:</p>
                 <div class="grid-list">
                     <ul>
-                        <li>🔹 Colocar apelidos e zoar</li>
-                        <li>🔹 Humilhar e discriminar</li>
-                        <li>🔹 Excluir, isolar ou ignorar</li>
-                        <li>🔹 Aterrorizar e amedrontar</li>
-                        <li>🔹 Bater, chutar e empurrar</li>
+                        <li>🔹 Colocar apelidos e zoar [cite: 8]</li>
+                        <li>🔹 Humilhar e discriminar [cite: 8]</li>
+                        <li>🔹 Excluir, isolar ou ignorar [cite: 8]</li>
+                        <li>🔹 Aterrorizar e amedrontar [cite: 8]</li>
+                        <li>🔹 Bater, chutar e empurrar [cite: 8]</li>
                     </ul>
                     <ul>
-                        <li>🔹 Roubar ou quebrar pertences</li>
-                        <li>🔹 Falar mal da família / fofocar</li>
-                        <li>🔹 Ameaçar e fazer acusações falsas</li>
-                        <li>🔹 Divulgar comentários maldosos</li>
-                        <li>🔹 Exclusão social deliberada</li>
+                        <li>🔹 Roubar ou quebrar pertences [cite: 8]</li>
+                        <li>🔹 Falar mal da família / fofocar [cite: 10]</li>
+                        <li>🔹 Ameaçar e fazer acusações falsas [cite: 10]</li>
+                        <li>🔹 Divulgar comentários maldosos [cite: 3]</li>
+                        <li>🔹 Exclusão social deliberada [cite: 3]</li>
                     </ul>
                 </div>
             </div>
@@ -261,16 +287,16 @@
         <div class="slide">
             <div class="content">
                 <h2>Estatísticas e Alcance</h2>
-                <p>Investigação da ONU revelou que <strong>metade</strong> de 100 mil jovens já sofreu bullying por aparência, gênero, etnia ou origem.</p>
+                <p>Investigação da ONU revelou que <strong>metade</strong> de 100 mil jovens já sofreu bullying por aparência, gênero, etnia ou origem[cite: 29].</p>
                 <div class="stats-grid">
-                    <div class="stat-card"><strong>🌎 Brasil</strong> 43%</div>
-                    <div class="stat-card"><strong>🇦🇷 Argentina</strong> 47,8%</div>
-                    <div class="stat-card"><strong>🇩🇪 Alemanha</strong> 35,7%</div>
-                    <div class="stat-card"><strong>🇳🇴 Noruega</strong> 40,4%</div>
+                    <div class="stat-card"><strong>🌎 Brasil</strong> 43% [cite: 30]</div>
+                    <div class="stat-card"><strong>🇦🇷 Argentina</strong> 47,8% [cite: 30]</div>
+                    <div class="stat-card"><strong>🇩🇪 Alemanha</strong> 35,7% [cite: 34]</div>
+                    <div class="stat-card"><strong>🇳🇴 Noruega</strong> 40,4% [cite: 34]</div>
                 </div>
                 <div class="highlight-box">
-                    <strong>📊 Dados do Rio de Janeiro (Abrapia, 2000):</strong> 40,5% dos estudantes envolvidos em bullying.<br>
-                    ➜ 16,9% apenas vítimas | 12,7% apenas autores | 10,9% autores e vítimas.
+                    <strong>📊 Dados do Rio de Janeiro (Abrapia, 2000):</strong> 40,5% dos estudantes envolvidos em bullying[cite: 31].<br>
+                    ➜ 16,9% apenas vítimas [cite: 31] | 12,7% apenas autores [cite: 32] | 10,9% autores e vítimas[cite: 32].
                 </div>
                 <p><span class="badge">Fonte: UNICEF, 2016; Abrapia, 2000</span></p>
             </div>
@@ -294,13 +320,12 @@
         <div class="slide">
             <div class="content">
                 <h2>Cyberbullying</h2>
-                <p>O termo foi criado por <strong>Bill Belsey</strong> para denominar o bullying virtual: <em>"uso repetitivo de tecnologias para ofender, hostilizar e ameaçar alguém"</em> (MELO, 2011).</p>
+                <p>O termo foi criado por <strong>Bill Belsey</strong> para denominar o bullying virtual: <em>"uso repetitivo de tecnologias para ofender, hostilizar e ameaçar alguém"</em> (MELO, 2011)[cite: 6].</p>
                 <div class="highlight-box">
                     <ul>
-                        <li>⚡ Violência digital entre pares nas redes sociais e aplicativos.</li>
-                        <li>⚡ Conteúdos hostis, humilhantes e anônimos.</li>
-                        <li>⚡ Causa sérios impactos à saúde psíquica (ansiedade, depressão).</li>
-                        <li>⚡ Maior incidência entre adolescentes de <strong>15 a 18 anos</strong>.</li>
+                        <li>⚡ Violência digital entre pares nas redes sociais digitais mediante conteúdos hostis e de humilhação[cite: 7].</li>
+                        <li>⚡ Causa impactos à saúde psíquica dos indivíduos[cite: 7].</li>
+                        <li>⚡ Maior incidência entre adolescentes na faixa dos <strong>15 aos 18 anos</strong>[cite: 37].</li>
                     </ul>
                 </div>
             </div>
@@ -312,21 +337,20 @@
                 <p>As agressões digitais assumem múltiplas facetas. Conheça as principais:</p>
                 <div class="grid-list">
                     <ul>
-                        <li><strong>📱 Harassment:</strong> Mensagens ofensivas repetitivas.</li>
-                        <li><strong>🔥 Flaming:</strong> Discussões calorosas e hostis.</li>
-                        <li><strong>🎭 Catfishing:</strong> Roubo de identidade com perfil falso.</li>
-                        <li><strong>📸 Sexting não consentido:</strong> Compartilhar imagens íntimas.</li>
-                        <li><strong>🧌 Trollagem:</strong> Comentários provocativos.</li>
+                        <li><strong>📱 Harassment:</strong> Envio de mensagens e comentários repetitivos com conteúdo ofensivo[cite: 14].</li>
+                        <li><strong>🔥 Flaming:</strong> Discussões calorosas on-line[cite: 18].</li>
+                        <li><strong>🎭 Catfishing:</strong> Roubando fotos e informações de uma pessoa e criando uma outra conta para se passar por ela[cite: 26].</li>
+                        <li><strong>📸 Sexting:</strong> Postando e/ou compartilhando imagens e vídeos com conteúdo íntimo de outra pessoa sem consentimento dela[cite: 19].</li>
+                        <li><strong>🧌 Trollagem:</strong> Envio de comentários provocativos por meio de insultos ou postagens fora do assunto[cite: 22].</li>
                     </ul>
                     <ul>
-                        <li><strong>🎮 Roubo em jogos:</strong> Invadir contas, formar gangues.</li>
-                        <li><strong>🃏 Memes ofensivos:</strong> Ridicularizar ou expor alguém.</li>
-                        <li><strong>🗳️ Votações difamatórias:</strong> Enquetes para humilhar.</li>
-                        <li><strong>⚠️ Challengers de exclusão:</strong> Desafios que isolam.</li>
-                        <li><strong>🚫 Exclusão digital:</strong> Bloquear intencionalmente.</li>
+                        <li><strong>🎮 Roubo em jogos:</strong> Roubo de itens de um jogo, invadindo a conta, formando gangues[cite: 21].</li>
+                        <li><strong>🃏 Memes ofensivos:</strong> Criação de memes com a intenção de humilhar, expor ou ridicularizar uma pessoa[cite: 23].</li>
+                        <li><strong>🗳️ Votações difamatórias:</strong> Votações on-line difamatórias[cite: 24].</li>
+                        <li><strong>⚠️ Challengers de exclusão:</strong> Challengers (desafios) de exclusão[cite: 25].</li>
+                        <li><strong>🚫 Exclusão digital:</strong> Exclusão de uma pessoa de um círculo social on-line de forma intencional[cite: 20].</li>
                     </ul>
                 </div>
-                <p><span class="badge">Baseado em: Melo, 2011; Willard, 2007</span></p>
             </div>
         </div>
 
@@ -524,7 +548,7 @@
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: newSearchParams({ pollId: pollId, answer: answer })
+                    body: new URLSearchParams({ pollId: pollId, answer: answer })
                 });
                 feedbackEl.innerHTML = "Voto registrado com sucesso! ✔️";
                 feedbackEl.style.color = "#10b981";
